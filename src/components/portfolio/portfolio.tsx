@@ -319,9 +319,9 @@ function Hero() {
           </Reveal>
           <Reveal delay={0.1}>
             <h1 className="text-5xl font-medium leading-[1.05] text-foreground sm:text-6xl md:text-7xl lg:text-[5.5rem]">
-              Syed Muntasir
+              Syed
               <br />
-              <span className="italic text-mint">Muhammad.</span>
+              <span className="italic text-mint">Muntasir.</span>
             </h1>
           </Reveal>
           <Reveal delay={0.2}>
