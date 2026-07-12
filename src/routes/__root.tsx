@@ -83,7 +83,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         content:
           "Grade 10 student passionate about cybersecurity, mathematics, public speaking, and speedcubing.",
       },
-      { name: "author", content: "Syed Muntasir Muhammad" },
+      { name: "author", content: "Syed Muntasir" },
       {
         name: "keywords",
         content:

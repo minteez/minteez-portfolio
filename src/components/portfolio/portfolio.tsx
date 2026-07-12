@@ -465,7 +465,7 @@ function About() {
               <dl className="space-y-4 text-sm">
                 <div className="flex justify-between border-b border-border/60 pb-3">
                   <dt className="text-muted-foreground">Name</dt>
-                  <dd className="font-medium">Syed Muntasir Muhammad</dd>
+                  <dd className="font-medium">Syed Muntasir</dd>
                 </div>
                 <div className="flex justify-between border-b border-border/60 pb-3">
                   <dt className="text-muted-foreground">Alias</dt>
@@ -913,7 +913,7 @@ function Footer() {
           Designed with curiosity, discipline, and a passion for technology.
         </p>
         <p className="font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">
-          © Syed Muntasir Muhammad
+          © Syed Muntasir
         </p>
       </div>
     </footer>
