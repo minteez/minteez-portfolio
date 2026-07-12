@@ -1,0 +1,950 @@
+import { motion, useScroll, useTransform } from "motion/react";
+import { useEffect, useRef, useState } from "react";
+import {
+  ArrowDown,
+  ArrowUpRight,
+  Award,
+  BookOpen,
+  Brain,
+  ChevronRight,
+  Cpu,
+  Github,
+  Instagram,
+  Lock,
+  Mail,
+  MessageCircle,
+  Mic2,
+  Puzzle,
+  Shield,
+  Sparkles,
+  Target,
+  Terminal,
+  Trophy,
+  Youtube,
+} from "lucide-react";
+import { Nav } from "./nav";
+import { Typewriter } from "./typewriter";
+import { Counter } from "./counter";
+import { CursorGlow } from "./cursor-glow";
+import { Reveal } from "./reveal";
+
+/* -------------------------------------------------------------------------- */
+/*  Data                                                                       */
+/* -------------------------------------------------------------------------- */
+
+const TYPEWRITER_ROLES = [
+  "Grade 10 Student",
+  "Future Cybersecurity Specialist",
+  "Mathematics Enthusiast",
+  "Speedcuber",
+  "Public Speaker",
+];
+
+const EDUCATION = [
+  {
+    school: "International Indian School",
+    place: "Dammam",
+    years: "2016 – 2023",
+    detail: "UKG – Mid Grade 7",
+  },
+  {
+    school: "Modern International School",
+    place: "Riyadh",
+    years: "2023 – 2027",
+    detail: "Grade 7 – Grade 10 · CBSE",
+  },
+  {
+    school: "International Indian School",
+    place: "Riyadh",
+    years: "2027 – 2029 · Planned",
+    detail: "Science Stream · Computer Science",
+  },
+];
+
+const SKILLS = [
+  { name: "Learning Ability", value: 99 },
+  { name: "Discipline", value: 98 },
+  { name: "Leadership", value: 96 },
+  { name: "Mathematics", value: 96 },
+  { name: "Public Speaking", value: 95 },
+  { name: "Communication", value: 95 },
+  { name: "Problem Solving", value: 94 },
+  { name: "General Knowledge", value: 93 },
+  { name: "Writing", value: 90 },
+  { name: "Operating Systems", value: 65, label: "Intermediate" },
+  { name: "Programming", value: 55, label: "Beginner – Intermediate" },
+  { name: "Cybersecurity Concepts", value: 40, label: "Beginner" },
+];
+
+const CUBING = [
+  { event: "3×3", time: "8.87s" },
+  { event: "2×2", time: "1.09s" },
+  { event: "4×4", time: "1:03" },
+  { event: "Megaminx", time: "3:02" },
+  { event: "Pyraminx", time: "4.53s" },
+  { event: "3×3 One-Handed", time: "20.94s" },
+  { event: "3×3 Blindfolded", time: "2:12.94" },
+  { event: "2×2 Blindfolded", time: "21.66s" },
+];
+
+const LEARNING = ["5×5", "Skewb", "4×4 Blindfolded"];
+
+const LEADERSHIP = [
+  { title: "Magazine Editor", icon: BookOpen },
+  { title: "Student Leader", icon: Sparkles },
+  { title: "School Assembly Anchor", icon: Mic2 },
+  { title: "News Reader", icon: Mic2 },
+  { title: "Public Speaker", icon: Mic2 },
+  { title: "Quiz Participant", icon: Brain },
+  { title: "Speech Competitor", icon: Mic2 },
+  { title: "Science Exhibition Presenter", icon: Cpu },
+  { title: "Rubik's Cube Demonstrator", icon: Puzzle },
+];
+
+const ACHIEVEMENTS = [
+  {
+    title: "First Position",
+    detail: "Best Mathematics Model · School Science Exhibition",
+    sub: "Rubik's Cube Functioning Model",
+  },
+  {
+    title: "95% · Class Topper",
+    detail: "Grade 9 Final Examination",
+  },
+  {
+    title: "Magazine Editor",
+    detail: "Won School Parliament Elections",
+  },
+  {
+    title: "Hindi Speech Competition",
+    detail: "Embassy of India · Riyadh",
+  },
+];
+
+const ACHIEVEMENT_TAGS = [
+  "Quran Recitation",
+  "Fine Arts",
+  "Drawing",
+  "Handwriting",
+  "Spelling Bee",
+  "Elocution",
+  "Extempore",
+  "School Quiz",
+  "Olympiads",
+  "Math Olympiad",
+  "Science Olympiad",
+  "Solo Dance",
+];
+
+const INTERESTS = [
+  { name: "Cybersecurity", icon: Shield },
+  { name: "Operating Systems", icon: Terminal },
+  { name: "Computers", icon: Cpu },
+  { name: "Mathematics", icon: Brain },
+  { name: "Speedcubing", icon: Puzzle },
+  { name: "Chess", icon: Target },
+  { name: "Checkers", icon: Target },
+  { name: "UNO", icon: Sparkles },
+  { name: "Football", icon: Trophy },
+  { name: "Table Tennis", icon: Trophy },
+  { name: "Reading Books", icon: BookOpen },
+  { name: "Public Speaking", icon: Mic2 },
+  { name: "Writing", icon: BookOpen },
+  { name: "Technology", icon: Cpu },
+  { name: "Ethical Hacking", icon: Lock },
+  { name: "Learning", icon: Brain },
+];
+
+const GOALS = [
+  "Finish Grade 10",
+  "Science Stream",
+  "Computer Science",
+  "University",
+  "Cybersecurity Career",
+  "Ethical Hacker",
+  "Security Researcher",
+  "Helping Young Learners",
+];
+
+const QUOTES = [
+  "Every expert was once a beginner.",
+  "Knowledge grows when curiosity never stops.",
+  "Discipline beats talent.",
+  "Think logically. Learn continuously.",
+];
+
+const SOCIALS = [
+  { name: "Email", value: "kerzibakthestickmanyt101@gmail.com", href: "mailto:kerzibakthestickmanyt101@gmail.com", icon: Mail },
+  { name: "GitHub", value: "github.com/minteez", href: "https://github.com/minteez", icon: Github },
+  { name: "Instagram", value: "@sudo.minteez", href: "https://instagram.com/sudo.minteez", icon: Instagram },
+  { name: "YouTube", value: "@thecubermint", href: "https://youtube.com/@thecubermint", icon: Youtube },
+  { name: "Discord", value: "sudo.minteez", href: "#", icon: MessageCircle },
+];
+
+/* -------------------------------------------------------------------------- */
+/*  Reusable                                                                   */
+/* -------------------------------------------------------------------------- */
+
+function SectionHeader({
+  eyebrow,
+  title,
+  subtitle,
+}: {
+  eyebrow: string;
+  title: string;
+  subtitle?: string;
+}) {
+  return (
+    <Reveal className="mb-16 max-w-2xl">
+      <div className="mb-4 flex items-center gap-3">
+        <span className="h-px w-8 bg-mint" />
+        <span className="font-mono text-xs uppercase tracking-[0.2em] text-mint">
+          {eyebrow}
+        </span>
+      </div>
+      <h2 className="text-4xl font-medium leading-tight text-foreground md:text-5xl">
+        {title}
+      </h2>
+      {subtitle && (
+        <p className="mt-4 text-base text-muted-foreground md:text-lg">
+          {subtitle}
+        </p>
+      )}
+    </Reveal>
+  );
+}
+
+function SkillBar({ name, value, label }: { name: string; value: number; label?: string }) {
+  return (
+    <Reveal>
+      <div className="mb-6">
+        <div className="mb-2 flex items-baseline justify-between">
+          <span className="text-sm font-medium text-foreground">{name}</span>
+          <span className="font-mono text-xs text-mint">{label ?? `${value}%`}</span>
+        </div>
+        <div className="h-1.5 overflow-hidden rounded-full bg-secondary">
+          <motion.div
+            initial={{ width: 0 }}
+            whileInView={{ width: `${value}%` }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 1.4, ease: [0.22, 1, 0.36, 1] }}
+            className="h-full rounded-full gradient-mint"
+          />
+        </div>
+      </div>
+    </Reveal>
+  );
+}
+
+/* -------------------------------------------------------------------------- */
+/*  Loader                                                                     */
+/* -------------------------------------------------------------------------- */
+
+function Loader() {
+  const [gone, setGone] = useState(false);
+  useEffect(() => {
+    const t = setTimeout(() => setGone(true), 900);
+    return () => clearTimeout(t);
+  }, []);
+  if (gone) return null;
+  return (
+    <motion.div
+      initial={{ opacity: 1 }}
+      animate={{ opacity: 0 }}
+      transition={{ delay: 0.7, duration: 0.4 }}
+      className="fixed inset-0 z-[100] grid place-items-center bg-background"
+    >
+      <div className="grid animate-spin-slow grid-cols-3 gap-1">
+        {Array.from({ length: 9 }).map((_, i) => (
+          <motion.span
+            key={i}
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: i * 0.05 }}
+            className="h-4 w-4 rounded-sm"
+            style={{
+              background: i % 2 === 0 ? "var(--mint)" : "transparent",
+              border: "1px solid var(--mint)",
+            }}
+          />
+        ))}
+      </div>
+    </motion.div>
+  );
+}
+
+/* -------------------------------------------------------------------------- */
+/*  Hero                                                                       */
+/* -------------------------------------------------------------------------- */
+
+function Hero() {
+  const ref = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
+  const y = useTransform(scrollYProgress, [0, 1], [0, 200]);
+  const opacity = useTransform(scrollYProgress, [0, 1], [1, 0]);
+
+  return (
+    <section id="top" ref={ref} className="relative flex min-h-screen items-center overflow-hidden pt-28">
+      {/* grid backdrop */}
+      <div className="absolute inset-0 grid-bg opacity-40" />
+      <div className="absolute inset-x-0 top-0 h-[60vh] bg-gradient-to-b from-transparent via-transparent to-background" />
+
+      {/* floating shapes */}
+      <div className="pointer-events-none absolute inset-0">
+        <div className="animate-float-slow absolute left-[8%] top-[20%] h-24 w-24 rounded-2xl border border-mint/30 bg-mint/5 backdrop-blur-sm" />
+        <div
+          className="animate-float-slow absolute right-[10%] top-[30%] h-16 w-16 rotate-45 border border-mint/40 bg-mint/10"
+          style={{ animationDelay: "-4s" }}
+        />
+        <div
+          className="animate-float-slow absolute bottom-[15%] left-[15%] h-12 w-12 rounded-full bg-mint/20 blur-xl"
+          style={{ animationDelay: "-8s" }}
+        />
+      </div>
+
+      <motion.div style={{ y, opacity }} className="relative z-10 mx-auto grid w-full max-w-7xl gap-16 px-6 lg:grid-cols-[1.4fr_1fr] lg:items-center">
+        <div>
+          <Reveal>
+            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-mint/30 bg-mint/5 px-3 py-1.5 font-mono text-[11px] uppercase tracking-[0.2em] text-mint">
+              <span className="relative flex h-1.5 w-1.5">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-mint opacity-75" />
+                <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-mint" />
+              </span>
+              Available for opportunities
+            </div>
+          </Reveal>
+
+          <Reveal delay={0.05}>
+            <p className="mb-3 font-mono text-sm text-muted-foreground">Hi, I'm</p>
+          </Reveal>
+          <Reveal delay={0.1}>
+            <h1 className="text-5xl font-medium leading-[1.05] text-foreground sm:text-6xl md:text-7xl lg:text-[5.5rem]">
+              Syed Muntasir
+              <br />
+              <span className="italic text-mint">Muhammad.</span>
+            </h1>
+          </Reveal>
+          <Reveal delay={0.2}>
+            <p className="mt-6 font-mono text-sm text-muted-foreground">
+              Known as <span className="text-foreground">Mint</span>
+              <span className="mx-3 text-mint">/</span>
+              <Typewriter words={TYPEWRITER_ROLES} />
+            </p>
+          </Reveal>
+
+          <Reveal delay={0.3}>
+            <p className="mt-8 max-w-xl text-base leading-relaxed text-muted-foreground md:text-lg">
+              A Grade 10 student passionate about cybersecurity, mathematics,
+              computers, operating systems, public speaking, and speedcubing.
+              I enjoy solving complex problems, exploring technology, and
+              continuously learning new skills that prepare me for a future
+              in computer science.
+            </p>
+          </Reveal>
+
+          <Reveal delay={0.4}>
+            <div className="mt-10 flex flex-wrap gap-3">
+              <a
+                href="#about"
+                className="group inline-flex items-center gap-2 rounded-full bg-mint px-6 py-3 text-sm font-medium text-mint-foreground transition-all hover:mint-glow"
+              >
+                Explore My Journey
+                <ArrowDown className="h-4 w-4 transition-transform group-hover:translate-y-0.5" />
+              </a>
+              <a
+                href="#contact"
+                className="group inline-flex items-center gap-2 rounded-full border border-border bg-transparent px-6 py-3 text-sm font-medium text-foreground transition-all hover:border-mint hover:text-mint"
+              >
+                Contact Me
+                <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+              </a>
+            </div>
+          </Reveal>
+        </div>
+
+        {/* Avatar */}
+        <Reveal delay={0.3} className="flex justify-center lg:justify-end">
+          <div className="relative">
+            <div className="animate-spin-slow absolute -inset-6 rounded-full border border-dashed border-mint/30" />
+            <div className="animate-mint-pulse relative grid h-64 w-64 place-items-center overflow-hidden rounded-full border border-mint/40 bg-gradient-to-br from-mint/20 via-background to-background sm:h-80 sm:w-80">
+              <div className="grid grid-cols-3 gap-1.5">
+                {["M", "I", "N", "T", "·", "·", "·", "·", "·"].map((c, i) => (
+                  <div
+                    key={i}
+                    className="grid h-14 w-14 place-items-center rounded-md border border-mint/30 bg-card/60 font-serif text-xl text-mint backdrop-blur-sm sm:h-16 sm:w-16"
+                  >
+                    {c}
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 rounded-full border border-mint/40 bg-background px-4 py-1 font-mono text-[10px] uppercase tracking-[0.2em] text-mint">
+              Mint · sudo
+            </div>
+          </div>
+        </Reveal>
+      </motion.div>
+
+      {/* Scroll arrow */}
+      <motion.a
+        href="#about"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.2 }}
+        className="absolute bottom-8 left-1/2 z-10 -translate-x-1/2"
+      >
+        <motion.div
+          animate={{ y: [0, 8, 0] }}
+          transition={{ duration: 2, repeat: Infinity }}
+          className="grid h-10 w-10 place-items-center rounded-full border border-mint/40 text-mint"
+        >
+          <ArrowDown className="h-4 w-4" />
+        </motion.div>
+      </motion.a>
+    </section>
+  );
+}
+
+/* -------------------------------------------------------------------------- */
+/*  About                                                                      */
+/* -------------------------------------------------------------------------- */
+
+function About() {
+  const highlights = [
+    "Grade 10 · CBSE",
+    "Cybersecurity",
+    "Ethical Hacking",
+    "Mathematics",
+    "Operating Systems",
+    "Public Speaker",
+    "Student Leader",
+    "Magazine Editor",
+  ];
+  return (
+    <section id="about" className="relative border-t border-border/60 py-32">
+      <div className="mx-auto max-w-7xl px-6">
+        <SectionHeader
+          eyebrow="01 · About"
+          title="Curious by nature, disciplined by choice."
+        />
+        <div className="grid gap-12 lg:grid-cols-[1.2fr_1fr]">
+          <Reveal>
+            <div className="space-y-5 text-base leading-relaxed text-muted-foreground md:text-lg">
+              <p>
+                I'm currently a Grade 10 student following the CBSE curriculum,
+                studying at Modern International School in Riyadh. Ever since
+                I picked up my first computer, I've been fascinated by how
+                machines think, how systems talk to each other, and how a few
+                lines of thoughtful code can shape entire experiences.
+              </p>
+              <p>
+                My deepest interests sit at the intersection of{" "}
+                <span className="text-foreground">cybersecurity</span>,{" "}
+                <span className="text-foreground">operating systems</span>,
+                and <span className="text-foreground">mathematics</span>. I
+                spend a lot of time reading books, watching lectures, and
+                slowly building the foundations I'll need to pursue ethical
+                hacking and security research in the future.
+              </p>
+              <p>
+                Outside of computers, I lead where I can — as a school
+                magazine editor, a student leader, an assembly anchor, and a
+                regular voice in speech and quiz competitions. I love talking
+                about ideas, teaching what I learn, and hopefully inspiring
+                other students who are just as curious about technology as I
+                am.
+              </p>
+            </div>
+          </Reveal>
+
+          <Reveal delay={0.15}>
+            <div className="rounded-3xl border border-border bg-card/50 p-8 backdrop-blur-sm">
+              <p className="mb-6 font-mono text-xs uppercase tracking-[0.2em] text-mint">
+                / Identity
+              </p>
+              <dl className="space-y-4 text-sm">
+                <div className="flex justify-between border-b border-border/60 pb-3">
+                  <dt className="text-muted-foreground">Name</dt>
+                  <dd className="font-medium">Syed Muntasir Muhammad</dd>
+                </div>
+                <div className="flex justify-between border-b border-border/60 pb-3">
+                  <dt className="text-muted-foreground">Alias</dt>
+                  <dd className="font-medium text-mint">Mint</dd>
+                </div>
+                <div className="flex justify-between border-b border-border/60 pb-3">
+                  <dt className="text-muted-foreground">Grade</dt>
+                  <dd className="font-medium">10 · CBSE</dd>
+                </div>
+                <div className="flex justify-between border-b border-border/60 pb-3">
+                  <dt className="text-muted-foreground">Based in</dt>
+                  <dd className="font-medium">Riyadh, KSA</dd>
+                </div>
+                <div className="flex justify-between">
+                  <dt className="text-muted-foreground">Focus</dt>
+                  <dd className="font-medium">Cybersecurity</dd>
+                </div>
+              </dl>
+              <div className="mt-6 flex flex-wrap gap-2">
+                {highlights.map((h) => (
+                  <span
+                    key={h}
+                    className="rounded-full border border-mint/25 bg-mint/5 px-3 py-1 font-mono text-[10px] uppercase tracking-widest text-mint"
+                  >
+                    {h}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </Reveal>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* -------------------------------------------------------------------------- */
+/*  Education                                                                  */
+/* -------------------------------------------------------------------------- */
+
+function Education() {
+  return (
+    <section id="education" className="relative border-t border-border/60 py-32">
+      <div className="mx-auto max-w-7xl px-6">
+        <SectionHeader
+          eyebrow="02 · Education"
+          title="A path built one milestone at a time."
+        />
+        <div className="relative mx-auto max-w-3xl">
+          <div className="absolute left-4 top-2 bottom-2 w-px bg-gradient-to-b from-mint/60 via-mint/20 to-transparent md:left-1/2" />
+          {EDUCATION.map((e, i) => (
+            <Reveal key={i} delay={i * 0.1}>
+              <div
+                className={`relative mb-12 grid gap-6 md:grid-cols-2 ${
+                  i % 2 === 1 ? "md:[&>div:first-child]:col-start-2" : ""
+                }`}
+              >
+                <div className="absolute left-4 top-4 -translate-x-1/2 md:left-1/2">
+                  <div className="animate-mint-pulse h-3 w-3 rounded-full bg-mint" />
+                </div>
+                <div className={`pl-12 md:pl-0 ${i % 2 === 0 ? "md:pr-12 md:text-right" : "md:pl-12"}`}>
+                  <div className="rounded-2xl border border-border bg-card/60 p-6 backdrop-blur-sm transition-all hover:border-mint/50 hover:mint-glow">
+                    <p className="mb-2 font-mono text-xs text-mint">{e.years}</p>
+                    <h3 className="font-serif text-xl text-foreground">{e.school}</h3>
+                    <p className="mt-1 text-sm text-muted-foreground">{e.place}</p>
+                    <p className="mt-3 text-sm text-foreground/80">{e.detail}</p>
+                  </div>
+                </div>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* -------------------------------------------------------------------------- */
+/*  Skills                                                                     */
+/* -------------------------------------------------------------------------- */
+
+function Skills() {
+  const left = SKILLS.slice(0, 6);
+  const right = SKILLS.slice(6);
+  return (
+    <section id="skills" className="relative border-t border-border/60 py-32">
+      <div className="mx-auto max-w-7xl px-6">
+        <SectionHeader
+          eyebrow="03 · Skills"
+          title="Sharpening the tools I care about."
+          subtitle="Percentages reflect confidence and consistency rather than formal certification."
+        />
+        <div className="grid gap-12 lg:grid-cols-2">
+          <div>{left.map((s) => <SkillBar key={s.name} {...s} />)}</div>
+          <div>{right.map((s) => <SkillBar key={s.name} {...s} />)}</div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* -------------------------------------------------------------------------- */
+/*  Cubing                                                                     */
+/* -------------------------------------------------------------------------- */
+
+function Cubing() {
+  return (
+    <section id="cubing" className="relative border-t border-border/60 py-32">
+      {/* subtle cube grid accent */}
+      <div className="pointer-events-none absolute right-8 top-24 hidden opacity-20 lg:block">
+        <div className="grid grid-cols-3 gap-1">
+          {Array.from({ length: 9 }).map((_, i) => (
+            <div key={i} className="h-6 w-6 rounded-sm border border-mint/50 bg-mint/10" />
+          ))}
+        </div>
+      </div>
+
+      <div className="mx-auto max-w-7xl px-6">
+        <SectionHeader
+          eyebrow="04 · Speedcubing"
+          title="Personal bests, measured in seconds."
+          subtitle="A record of my fastest solves across events. Times move as I keep practicing."
+        />
+
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {CUBING.map((c, i) => (
+            <Reveal key={c.event} delay={i * 0.05}>
+              <div className="group relative overflow-hidden rounded-2xl border border-border bg-card/60 p-6 backdrop-blur-sm transition-all hover:-translate-y-1 hover:border-mint/60 hover:mint-glow">
+                <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-mint to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
+                <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
+                  {c.event}
+                </p>
+                <p className="mt-3 font-serif text-3xl text-foreground">{c.time}</p>
+                <p className="mt-4 font-mono text-[10px] text-mint">Personal best</p>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+
+        <Reveal delay={0.2}>
+          <div className="mt-12 rounded-3xl border border-mint/30 bg-mint/5 p-8">
+            <p className="font-mono text-xs uppercase tracking-[0.2em] text-mint">
+              Currently learning
+            </p>
+            <div className="mt-4 flex flex-wrap gap-3">
+              {LEARNING.map((l) => (
+                <span
+                  key={l}
+                  className="rounded-full border border-mint/40 bg-background/60 px-4 py-1.5 text-sm font-medium text-foreground"
+                >
+                  {l}
+                </span>
+              ))}
+            </div>
+          </div>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
+/* -------------------------------------------------------------------------- */
+/*  Leadership                                                                 */
+/* -------------------------------------------------------------------------- */
+
+function Leadership() {
+  return (
+    <section id="leadership" className="relative border-t border-border/60 py-32">
+      <div className="mx-auto max-w-7xl px-6">
+        <SectionHeader
+          eyebrow="05 · Leadership & Activities"
+          title="Roles that shaped how I show up."
+        />
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {LEADERSHIP.map((l, i) => (
+            <Reveal key={l.title} delay={i * 0.05}>
+              <div className="group flex items-center gap-4 rounded-2xl border border-border bg-card/50 p-5 transition-all hover:border-mint/50 hover:bg-card">
+                <div className="grid h-12 w-12 shrink-0 place-items-center rounded-xl border border-mint/30 bg-mint/10 text-mint transition-all group-hover:mint-glow">
+                  <l.icon className="h-5 w-5" />
+                </div>
+                <p className="min-w-0 font-medium text-foreground">{l.title}</p>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* -------------------------------------------------------------------------- */
+/*  Achievements                                                               */
+/* -------------------------------------------------------------------------- */
+
+function Achievements() {
+  return (
+    <section id="achievements" className="relative border-t border-border/60 py-32">
+      <div className="mx-auto max-w-7xl px-6">
+        <SectionHeader
+          eyebrow="06 · Achievements"
+          title="Small wins that keep me building."
+        />
+        <div className="grid gap-6 md:grid-cols-2">
+          {ACHIEVEMENTS.map((a, i) => (
+            <Reveal key={a.title} delay={i * 0.08}>
+              <div className="group relative overflow-hidden rounded-3xl border border-border bg-card/60 p-8 transition-all hover:border-mint/50">
+                <Trophy className="absolute right-6 top-6 h-6 w-6 text-mint/60 transition-all group-hover:text-mint group-hover:mint-glow" />
+                <p className="font-mono text-xs uppercase tracking-[0.2em] text-mint">
+                  0{i + 1}
+                </p>
+                <h3 className="mt-3 font-serif text-2xl text-foreground">{a.title}</h3>
+                <p className="mt-2 text-sm text-muted-foreground">{a.detail}</p>
+                {a.sub && <p className="mt-1 text-sm text-muted-foreground">{a.sub}</p>}
+              </div>
+            </Reveal>
+          ))}
+        </div>
+
+        <Reveal delay={0.2}>
+          <div className="mt-14">
+            <p className="mb-5 font-mono text-xs uppercase tracking-[0.2em] text-mint">
+              / Also recognised in
+            </p>
+            <div className="flex flex-wrap gap-2.5">
+              {ACHIEVEMENT_TAGS.map((t) => (
+                <span
+                  key={t}
+                  className="inline-flex items-center gap-2 rounded-full border border-border bg-card/50 px-4 py-1.5 text-sm text-foreground/80 transition-colors hover:border-mint/50 hover:text-mint"
+                >
+                  <Award className="h-3 w-3 text-mint" />
+                  {t}
+                </span>
+              ))}
+            </div>
+          </div>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
+/* -------------------------------------------------------------------------- */
+/*  Interests                                                                  */
+/* -------------------------------------------------------------------------- */
+
+function Interests() {
+  return (
+    <section id="interests" className="relative border-t border-border/60 py-32">
+      <div className="mx-auto max-w-7xl px-6">
+        <SectionHeader
+          eyebrow="07 · Interests"
+          title="What I lean toward, on and off the screen."
+        />
+        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
+          {INTERESTS.map((it, i) => (
+            <Reveal key={it.name} delay={i * 0.03}>
+              <div className="group flex flex-col items-start gap-3 rounded-2xl border border-border bg-card/40 p-5 transition-all hover:-translate-y-0.5 hover:border-mint/50 hover:bg-card">
+                <it.icon className="h-5 w-5 text-mint transition-all group-hover:scale-110" />
+                <p className="text-sm font-medium text-foreground">{it.name}</p>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* -------------------------------------------------------------------------- */
+/*  Goals                                                                      */
+/* -------------------------------------------------------------------------- */
+
+function Goals() {
+  return (
+    <section id="goals" className="relative border-t border-border/60 py-32">
+      <div className="mx-auto max-w-7xl px-6">
+        <SectionHeader
+          eyebrow="08 · Future Goals"
+          title="The next few steps, in order."
+        />
+        <div className="mx-auto max-w-3xl">
+          {GOALS.map((g, i) => (
+            <Reveal key={g} delay={i * 0.05}>
+              <div className="flex items-center gap-6">
+                <div className="flex flex-col items-center">
+                  <div className="grid h-12 w-12 place-items-center rounded-full border border-mint/40 bg-mint/10 font-mono text-xs text-mint">
+                    {String(i + 1).padStart(2, "0")}
+                  </div>
+                  {i < GOALS.length - 1 && (
+                    <div className="h-10 w-px bg-gradient-to-b from-mint/60 to-mint/10" />
+                  )}
+                </div>
+                <div className="flex-1 pb-6">
+                  <div className="group flex items-center justify-between rounded-2xl border border-border bg-card/50 px-6 py-4 transition-all hover:border-mint/50 hover:mint-glow">
+                    <p className="font-serif text-lg text-foreground">{g}</p>
+                    <ChevronRight className="h-4 w-4 text-mint opacity-0 transition-opacity group-hover:opacity-100" />
+                  </div>
+                </div>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* -------------------------------------------------------------------------- */
+/*  Quotes                                                                     */
+/* -------------------------------------------------------------------------- */
+
+function Quotes() {
+  const [i, setI] = useState(0);
+  useEffect(() => {
+    const t = setInterval(() => setI((v) => (v + 1) % QUOTES.length), 4500);
+    return () => clearInterval(t);
+  }, []);
+  return (
+    <section className="relative border-t border-border/60 py-32">
+      <div className="mx-auto max-w-4xl px-6 text-center">
+        <div className="mb-6 flex items-center justify-center gap-3">
+          <span className="h-px w-8 bg-mint" />
+          <span className="font-mono text-xs uppercase tracking-[0.2em] text-mint">
+            Thoughts I return to
+          </span>
+          <span className="h-px w-8 bg-mint" />
+        </div>
+        <motion.blockquote
+          key={i}
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="font-serif text-3xl italic leading-tight text-foreground md:text-5xl"
+        >
+          "{QUOTES[i]}"
+        </motion.blockquote>
+        <div className="mt-8 flex justify-center gap-2">
+          {QUOTES.map((_, idx) => (
+            <button
+              key={idx}
+              onClick={() => setI(idx)}
+              aria-label={`Quote ${idx + 1}`}
+              className={`h-1 rounded-full transition-all ${
+                idx === i ? "w-8 bg-mint" : "w-4 bg-border"
+              }`}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* -------------------------------------------------------------------------- */
+/*  Facts                                                                      */
+/* -------------------------------------------------------------------------- */
+
+const FACTS: Array<{ value: number; suffix: string; label: string; text?: string }> = [
+  { value: 95, suffix: "%", label: "Grade 9 Score" },
+  { value: 8, suffix: "+", label: "Puzzle Types Solved" },
+  { value: 20, suffix: "+", label: "School Competitions" },
+  { value: 100, suffix: "+", label: "Hours Practicing Cubes" },
+];
+
+function Facts() {
+  return (
+    <section className="relative border-t border-border/60 py-32">
+      <div className="mx-auto max-w-7xl px-6">
+        <SectionHeader eyebrow="09 · Fun Facts" title="A quick look, in numbers." />
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
+          {FACTS.map((f) => (
+            <Reveal key={f.label}>
+              <div className="rounded-2xl border border-border bg-card/50 p-6 transition-all hover:border-mint/50">
+                <p className="font-serif text-5xl text-mint text-mint-glow">
+                  <Counter to={f.value} suffix={f.suffix} />
+                </p>
+                <p className="mt-3 text-sm text-muted-foreground">{f.label}</p>
+              </div>
+            </Reveal>
+          ))}
+          <Reveal>
+            <div className="rounded-2xl border border-mint/40 bg-mint/10 p-6">
+              <p className="font-serif text-4xl text-mint text-mint-glow">Thousands</p>
+              <p className="mt-3 text-sm text-muted-foreground">of Algorithms Learned</p>
+            </div>
+          </Reveal>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* -------------------------------------------------------------------------- */
+/*  Contact                                                                    */
+/* -------------------------------------------------------------------------- */
+
+function Contact() {
+  return (
+    <section id="contact" className="relative border-t border-border/60 py-32">
+      <div className="mx-auto max-w-5xl px-6">
+        <SectionHeader
+          eyebrow="10 · Contact"
+          title="Let's talk about ideas, cubes, or code."
+          subtitle="I'm easiest to reach on email — the rest is where I share what I'm learning."
+        />
+        <div className="grid gap-3">
+          {SOCIALS.map((s, i) => (
+            <Reveal key={s.name} delay={i * 0.05}>
+              <a
+                href={s.href}
+                target={s.href.startsWith("http") ? "_blank" : undefined}
+                rel="noreferrer"
+                className="group grid grid-cols-[minmax(0,1fr)_auto] items-center gap-4 rounded-2xl border border-border bg-card/50 px-6 py-5 transition-all hover:border-mint/60 hover:mint-glow sm:flex sm:justify-between"
+              >
+                <div className="flex min-w-0 items-center gap-4">
+                  <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl border border-mint/30 bg-mint/10 text-mint">
+                    <s.icon className="h-4 w-4" />
+                  </div>
+                  <div className="min-w-0">
+                    <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
+                      {s.name}
+                    </p>
+                    <p className="truncate font-medium text-foreground">{s.value}</p>
+                  </div>
+                </div>
+                <ArrowUpRight className="h-5 w-5 shrink-0 text-mint transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+              </a>
+            </Reveal>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* -------------------------------------------------------------------------- */
+/*  Footer                                                                     */
+/* -------------------------------------------------------------------------- */
+
+function Footer() {
+  return (
+    <footer className="border-t border-border/60 py-12">
+      <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-6 text-center sm:flex-row sm:text-left">
+        <p className="font-serif italic text-muted-foreground">
+          Designed with curiosity, discipline, and a passion for technology.
+        </p>
+        <p className="font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">
+          © Syed Muntasir Muhammad
+        </p>
+      </div>
+    </footer>
+  );
+}
+
+/* -------------------------------------------------------------------------- */
+/*  Root                                                                       */
+/* -------------------------------------------------------------------------- */
+
+export function Portfolio() {
+  return (
+    <div className="relative min-h-screen overflow-hidden bg-background text-foreground">
+      <Loader />
+      <CursorGlow />
+      <Nav />
+      <main className="relative z-10">
+        <Hero />
+        <About />
+        <Education />
+        <Skills />
+        <Cubing />
+        <Leadership />
+        <Achievements />
+        <Interests />
+        <Goals />
+        <Quotes />
+        <Facts />
+        <Contact />
+      </main>
+      <Footer />
+    </div>
+  );
+}
