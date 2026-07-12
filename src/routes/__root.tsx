@@ -77,7 +77,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Syed Muntasir Muhammad | Mint" },
+      { title: "Welcome to Mint's Portfolio" },
       {
         name: "description",
         content:
@@ -89,7 +89,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         content:
           "Cybersecurity, Student, Speedcubing, Mathematics, Public Speaking, CBSE, Technology, Portfolio, Ethical Hacking, Operating Systems",
       },
-      { property: "og:title", content: "Syed Muntasir Muhammad | Mint" },
+      { property: "og:title", content: "Welcome to Mint's Portfolio" },
       {
         property: "og:description",
         content:
@@ -97,13 +97,16 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Welcome to Mint's Portfolio" },
+      { name: "twitter:description", content: "Grade 10 student passionate about cybersecurity, mathematics, public speaking, and speedcubing." },
+      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/042ddc5d-22ff-481a-924c-2e6183b2a62a" },
+      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/042ddc5d-22ff-481a-924c-2e6183b2a62a" },
     ],
     links: [
       {
         rel: "stylesheet",
         href: appCss,
       },
-      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       {
         rel: "preconnect",
