@@ -27,6 +27,7 @@ import { Typewriter } from "./typewriter";
 import { Counter } from "./counter";
 import { CursorGlow } from "./cursor-glow";
 import { Reveal } from "./reveal";
+import profileAsset from "@/assets/mint-profile.png.asset.json";
 
 /* -------------------------------------------------------------------------- */
 /*  Data                                                                       */
@@ -366,17 +367,14 @@ function Hero() {
         <Reveal delay={0.3} className="flex justify-center lg:justify-end">
           <div className="relative">
             <div className="animate-spin-slow absolute -inset-6 rounded-full border border-dashed border-mint/30" />
-            <div className="animate-mint-pulse relative grid h-64 w-64 place-items-center overflow-hidden rounded-full border border-mint/40 bg-gradient-to-br from-mint/20 via-background to-background sm:h-80 sm:w-80">
-              <div className="grid grid-cols-3 gap-1.5">
-                {["M", "I", "N", "T", "·", "·", "·", "·", "·"].map((c, i) => (
-                  <div
-                    key={i}
-                    className="grid h-14 w-14 place-items-center rounded-md border border-mint/30 bg-card/60 font-serif text-xl text-mint backdrop-blur-sm sm:h-16 sm:w-16"
-                  >
-                    {c}
-                  </div>
-                ))}
-              </div>
+            <div className="animate-mint-pulse relative h-64 w-64 overflow-hidden rounded-full border border-mint/40 bg-gradient-to-br from-mint/20 via-background to-background sm:h-80 sm:w-80">
+              <img
+                src={profileAsset.url}
+                alt="Syed Muntasir — Mint"
+                className="h-full w-full object-cover"
+                loading="eager"
+                decoding="async"
+              />
             </div>
             <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 rounded-full border border-mint/40 bg-background px-4 py-1 font-mono text-[10px] uppercase tracking-[0.2em] text-mint">
               Mint · sudo
