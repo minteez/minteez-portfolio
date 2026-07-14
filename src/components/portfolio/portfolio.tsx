@@ -27,6 +27,7 @@ import { Typewriter } from "./typewriter";
 import { Counter } from "./counter";
 import { CursorGlow } from "./cursor-glow";
 import { Reveal } from "./reveal";
+import profileAsset from "@/assets/mint-profile.png.asset.json";
 
 /* -------------------------------------------------------------------------- */
 /*  Data                                                                       */
