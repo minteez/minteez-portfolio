@@ -708,6 +708,66 @@ function Achievements() {
 }
 
 /* -------------------------------------------------------------------------- */
+/*  Projects                                                                   */
+/* -------------------------------------------------------------------------- */
+
+const PROJECTS = [
+  {
+    title: "Browser Game Hub",
+    description:
+      "A collection of browser-based games built entirely with Gemini. Every game loads instantly and can be played directly in your browser — no installs, no setup.",
+    href: "https://minteez.github.io/browser-game-hub",
+    tags: ["Gemini", "Browser Games", "Web Development"],
+  },
+];
+
+function Projects() {
+  return (
+    <section id="projects" className="relative border-t border-border/60 py-32">
+      <div className="mx-auto max-w-7xl px-6">
+        <SectionHeader
+          eyebrow="07 · Projects"
+          title="Things I've built, one experiment at a time."
+        />
+        <div className="grid gap-6 md:grid-cols-2">
+          {PROJECTS.map((p, i) => (
+            <Reveal key={p.title} delay={i * 0.08}>
+              <a
+                href={p.href}
+                target="_blank"
+                rel="noreferrer"
+                className="group block overflow-hidden rounded-3xl border border-border bg-card/60 p-8 transition-all hover:-translate-y-1 hover:border-mint/60 hover:mint-glow"
+              >
+                <div className="mb-6 flex items-center justify-between">
+                  <div className="grid h-12 w-12 place-items-center rounded-xl border border-mint/30 bg-mint/10 text-mint">
+                    <Gamepad2 className="h-5 w-5" />
+                  </div>
+                  <ExternalLink className="h-5 w-5 text-mint transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                </div>
+                <h3 className="font-serif text-2xl text-foreground">{p.title}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                  {p.description}
+                </p>
+                <div className="mt-6 flex flex-wrap gap-2">
+                  {p.tags.map((t) => (
+                    <span
+                      key={t}
+                      className="rounded-full border border-mint/25 bg-mint/5 px-3 py-1 font-mono text-[10px] uppercase tracking-widest text-mint"
+                    >
+                      {t}
+                    </span>
+                  ))}
+                </div>
+              </a>
+            </Reveal>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* -------------------------------------------------------------------------- */
 /*  Interests                                                                  */
 /* -------------------------------------------------------------------------- */
 
@@ -938,6 +998,7 @@ export function Portfolio() {
         <Cubing />
         <Leadership />
         <Achievements />
+        <Projects />
         <Interests />
         <Goals />
         <Quotes />
