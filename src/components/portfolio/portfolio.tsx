@@ -8,6 +8,8 @@ import {
   Brain,
   ChevronRight,
   Cpu,
+  ExternalLink,
+  Gamepad2,
   Github,
   Instagram,
   Lock,
@@ -81,7 +83,7 @@ const CUBING = [
   { event: "3×3", time: "8.87s" },
   { event: "2×2", time: "1.09s" },
   { event: "4×4", time: "1:03" },
-  { event: "Megaminx", time: "3:02" },
+  { event: "Megaminx", time: "2:22" },
   { event: "Pyraminx", time: "4.53s" },
   { event: "3×3 One-Handed", time: "20.94s" },
   { event: "3×3 Blindfolded", time: "2:12.94" },
@@ -117,8 +119,8 @@ const ACHIEVEMENTS = [
     detail: "Won School Parliament Elections",
   },
   {
-    title: "Hindi Speech Competition",
-    detail: "Embassy of India · Riyadh",
+    title: "Best Catalyst",
+    detail: "Zeal Summer Camp 2026 · Riyadh",
   },
 ];
 
