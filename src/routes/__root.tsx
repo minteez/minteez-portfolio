@@ -85,6 +85,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
       { name: "author", content: "Syed Muntasir" },
       {
+        name: "p:domain_verify",
+        content: "10ba761cbcfb4cb64dcaf528c428baed",
+      },
+      {
         name: "keywords",
         content:
           "Cybersecurity, Student, Speedcubing, Mathematics, Public Speaking, CBSE, Technology, Portfolio, Ethical Hacking, Operating Systems",
