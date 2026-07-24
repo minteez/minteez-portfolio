@@ -81,7 +81,7 @@ const SKILLS = [
 
 const CUBING = [
   { event: "3×3", time: "8.87s" },
-  { event: "2×2", time: "1.09s" },
+  { event: "2×2", time: "1.06s" },
   { event: "4×4", time: "1:03" },
   { event: "Megaminx", time: "2:22" },
   { event: "Pyraminx", time: "4.53s" },
