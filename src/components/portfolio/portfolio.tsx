@@ -116,7 +116,7 @@ const ACHIEVEMENTS = [
   },
   {
     title: "Magazine Editor",
-    detail: "Won School Parliament Elections",
+    detail: "Won School Parliament Election",
   },
   {
     title: "Best Catalyst",
