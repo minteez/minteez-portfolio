@@ -776,7 +776,7 @@ function Interests() {
     <section id="interests" className="relative border-t border-border/60 py-32">
       <div className="mx-auto max-w-7xl px-6">
         <SectionHeader
-          eyebrow="07 · Interests"
+          eyebrow="08 · Interests"
           title="What I lean toward, on and off the screen."
         />
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
@@ -803,7 +803,7 @@ function Goals() {
     <section id="goals" className="relative border-t border-border/60 py-32">
       <div className="mx-auto max-w-7xl px-6">
         <SectionHeader
-          eyebrow="08 · Future Goals"
+          eyebrow="09 · Future Goals"
           title="The next few steps, in order."
         />
         <div className="mx-auto max-w-3xl">
@@ -894,7 +894,7 @@ function Facts() {
   return (
     <section className="relative border-t border-border/60 py-32">
       <div className="mx-auto max-w-7xl px-6">
-        <SectionHeader eyebrow="09 · Fun Facts" title="A quick look, in numbers." />
+        <SectionHeader eyebrow="10 · Fun Facts" title="A quick look, in numbers." />
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
           {FACTS.map((f) => (
             <Reveal key={f.label}>
@@ -927,7 +927,7 @@ function Contact() {
     <section id="contact" className="relative border-t border-border/60 py-32">
       <div className="mx-auto max-w-5xl px-6">
         <SectionHeader
-          eyebrow="10 · Contact"
+          eyebrow="11 · Contact"
           title="Let's talk about ideas, cubes, or code."
           subtitle="I'm easiest to reach on email — the rest is where I share what I'm learning."
         />
