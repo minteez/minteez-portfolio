@@ -101,6 +101,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:description", content: "Grade 10 student passionate about cybersecurity, mathematics, public speaking, and speedcubing." },
       { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/042ddc5d-22ff-481a-924c-2e6183b2a62a" },
       { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/042ddc5d-22ff-481a-924c-2e6183b2a62a" },
+      { name: "p:domain_verify", content: "10ba761cbcfb4cb64dcaf528c428baed" },
     ],
     links: [
       {
