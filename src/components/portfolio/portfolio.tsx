@@ -987,7 +987,7 @@ function Footer() {
           Designed with curiosity, discipline, and a passion for technology.
         </p>
         <p className="font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">
-          © Syed Muntasir
+          ©2026 SYED MUNTASIR
         </p>
       </div>
     </footer>
