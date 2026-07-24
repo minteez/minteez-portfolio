@@ -8,6 +8,7 @@ const links = [
   { id: "cubing", label: "Cubing" },
   { id: "leadership", label: "Leadership" },
   { id: "achievements", label: "Achievements" },
+  { id: "projects", label: "Projects" },
   { id: "goals", label: "Goals" },
   { id: "contact", label: "Contact" },
 ];

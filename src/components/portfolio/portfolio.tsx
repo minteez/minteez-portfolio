@@ -8,6 +8,8 @@ import {
   Brain,
   ChevronRight,
   Cpu,
+  ExternalLink,
+  Gamepad2,
   Github,
   Instagram,
   Lock,
@@ -81,7 +83,7 @@ const CUBING = [
   { event: "3×3", time: "8.87s" },
   { event: "2×2", time: "1.09s" },
   { event: "4×4", time: "1:03" },
-  { event: "Megaminx", time: "3:02" },
+  { event: "Megaminx", time: "2:22" },
   { event: "Pyraminx", time: "4.53s" },
   { event: "3×3 One-Handed", time: "20.94s" },
   { event: "3×3 Blindfolded", time: "2:12.94" },
@@ -117,8 +119,8 @@ const ACHIEVEMENTS = [
     detail: "Won School Parliament Elections",
   },
   {
-    title: "Hindi Speech Competition",
-    detail: "Embassy of India · Riyadh",
+    title: "Best Catalyst",
+    detail: "Zeal Summer Camp 2026 · Riyadh",
   },
 ];
 
@@ -706,6 +708,66 @@ function Achievements() {
 }
 
 /* -------------------------------------------------------------------------- */
+/*  Projects                                                                   */
+/* -------------------------------------------------------------------------- */
+
+const PROJECTS = [
+  {
+    title: "Browser Game Hub",
+    description:
+      "A collection of browser-based games built entirely with Gemini. Every game loads instantly and can be played directly in your browser — no installs, no setup.",
+    href: "https://minteez.github.io/browser-game-hub",
+    tags: ["Gemini", "Browser Games", "Web Development"],
+  },
+];
+
+function Projects() {
+  return (
+    <section id="projects" className="relative border-t border-border/60 py-32">
+      <div className="mx-auto max-w-7xl px-6">
+        <SectionHeader
+          eyebrow="07 · Projects"
+          title="Things I've built, one experiment at a time."
+        />
+        <div className="grid gap-6 md:grid-cols-2">
+          {PROJECTS.map((p, i) => (
+            <Reveal key={p.title} delay={i * 0.08}>
+              <a
+                href={p.href}
+                target="_blank"
+                rel="noreferrer"
+                className="group block overflow-hidden rounded-3xl border border-border bg-card/60 p-8 transition-all hover:-translate-y-1 hover:border-mint/60 hover:mint-glow"
+              >
+                <div className="mb-6 flex items-center justify-between">
+                  <div className="grid h-12 w-12 place-items-center rounded-xl border border-mint/30 bg-mint/10 text-mint">
+                    <Gamepad2 className="h-5 w-5" />
+                  </div>
+                  <ExternalLink className="h-5 w-5 text-mint transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                </div>
+                <h3 className="font-serif text-2xl text-foreground">{p.title}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                  {p.description}
+                </p>
+                <div className="mt-6 flex flex-wrap gap-2">
+                  {p.tags.map((t) => (
+                    <span
+                      key={t}
+                      className="rounded-full border border-mint/25 bg-mint/5 px-3 py-1 font-mono text-[10px] uppercase tracking-widest text-mint"
+                    >
+                      {t}
+                    </span>
+                  ))}
+                </div>
+              </a>
+            </Reveal>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* -------------------------------------------------------------------------- */
 /*  Interests                                                                  */
 /* -------------------------------------------------------------------------- */
 
@@ -714,7 +776,7 @@ function Interests() {
     <section id="interests" className="relative border-t border-border/60 py-32">
       <div className="mx-auto max-w-7xl px-6">
         <SectionHeader
-          eyebrow="07 · Interests"
+          eyebrow="08 · Interests"
           title="What I lean toward, on and off the screen."
         />
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
@@ -741,7 +803,7 @@ function Goals() {
     <section id="goals" className="relative border-t border-border/60 py-32">
       <div className="mx-auto max-w-7xl px-6">
         <SectionHeader
-          eyebrow="08 · Future Goals"
+          eyebrow="09 · Future Goals"
           title="The next few steps, in order."
         />
         <div className="mx-auto max-w-3xl">
@@ -832,7 +894,7 @@ function Facts() {
   return (
     <section className="relative border-t border-border/60 py-32">
       <div className="mx-auto max-w-7xl px-6">
-        <SectionHeader eyebrow="09 · Fun Facts" title="A quick look, in numbers." />
+        <SectionHeader eyebrow="10 · Fun Facts" title="A quick look, in numbers." />
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
           {FACTS.map((f) => (
             <Reveal key={f.label}>
@@ -865,7 +927,7 @@ function Contact() {
     <section id="contact" className="relative border-t border-border/60 py-32">
       <div className="mx-auto max-w-5xl px-6">
         <SectionHeader
-          eyebrow="10 · Contact"
+          eyebrow="11 · Contact"
           title="Let's talk about ideas, cubes, or code."
           subtitle="I'm easiest to reach on email — the rest is where I share what I'm learning."
         />
@@ -936,6 +998,7 @@ export function Portfolio() {
         <Cubing />
         <Leadership />
         <Achievements />
+        <Projects />
         <Interests />
         <Goals />
         <Quotes />
