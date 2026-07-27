@@ -11,7 +11,6 @@ import {
   ExternalLink,
   Gamepad2,
   Github,
-  Globe,
   HardDrive,
   Instagram,
   Library,
