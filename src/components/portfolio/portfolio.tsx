@@ -750,13 +750,38 @@ function Achievements() {
 /*  Projects                                                                   */
 /* -------------------------------------------------------------------------- */
 
-const PROJECTS = [
+const PROJECTS: {
+  title: string;
+  description: string;
+  href: string;
+  tags: string[];
+  icon: React.ComponentType<{ className?: string }>;
+  note?: string;
+}[] = [
   {
     title: "Browser Game Hub",
     description:
       "A collection of browser-based games built entirely with Gemini. Every game loads instantly and can be played directly in your browser — no installs, no setup.",
     href: "https://minteez.github.io/browser-game-hub",
     tags: ["Gemini", "Browser Games", "Web Development"],
+    icon: Gamepad2,
+  },
+  {
+    title: "OS Archive",
+    description:
+      "An interactive digital museum dedicated to OS history with a dark retro CRT aesthetic. Explore Windows codenames, macOS, and Linux milestones through visual timelines, comparison tools, an OS family tree, a CLI terminal simulator, and interactive trivia.",
+    href: "https://minteez.github.io/os-archive/",
+    tags: ["Operating Systems", "Retro CRT", "Interactive"],
+    icon: Archive,
+    note: "No longer maintained — updates have stopped.",
+  },
+  {
+    title: "BootArchive",
+    description:
+      "An interactive museum of OS startup history. From 1970s terminal interfaces to modern high-fidelity sequences, it preserves the \u201cfirst impression\u201d of computing through educational simulations and original recreations of the visual evolution of boot experiences.",
+    href: "https://minteez.github.io/bootarchive/",
+    tags: ["Boot Sequences", "Simulation", "Computing History"],
+    icon: Power,
   },
 ];
 
@@ -779,7 +804,7 @@ function Projects() {
               >
                 <div className="mb-6 flex items-center justify-between">
                   <div className="grid h-12 w-12 place-items-center rounded-xl border border-mint/30 bg-mint/10 text-mint">
-                    <Gamepad2 className="h-5 w-5" />
+                    <p.icon className="h-5 w-5" />
                   </div>
                   <ExternalLink className="h-5 w-5 text-mint transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
                 </div>
@@ -787,6 +812,11 @@ function Projects() {
                 <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
                   {p.description}
                 </p>
+                {p.note && (
+                  <p className="mt-4 rounded-xl border border-border bg-muted/30 px-4 py-2 font-mono text-[11px] uppercase tracking-widest text-muted-foreground">
+                    {p.note}
+                  </p>
+                )}
                 <div className="mt-6 flex flex-wrap gap-2">
                   {p.tags.map((t) => (
                     <span
