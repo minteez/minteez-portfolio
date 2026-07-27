@@ -1,32 +1,26 @@
 import { motion, useScroll, useTransform } from "motion/react";
 import { useEffect, useRef, useState } from "react";
 import {
-  Archive,
   ArrowDown,
   ArrowUpRight,
   Award,
-  Blocks,
   BookOpen,
-  Boxes,
   Brain,
   ChevronRight,
   Cpu,
-  Crown,
   ExternalLink,
   Gamepad2,
   Github,
   Instagram,
-  Library,
   Lock,
   Mail,
+  MessageCircle,
   Mic2,
-  Power,
   Puzzle,
   Shield,
   Sparkles,
   Target,
   Terminal,
-  Timer,
   Trophy,
   Youtube,
 } from "lucide-react";
@@ -89,7 +83,7 @@ const CUBING = [
   { event: "3×3", time: "8.87s" },
   { event: "2×2", time: "1.06s" },
   { event: "4×4", time: "1:03" },
-  { event: "Megaminx", time: "2:02" },
+  { event: "Megaminx", time: "2:22" },
   { event: "Pyraminx", time: "4.53s" },
   { event: "3×3 One-Handed", time: "20.94s" },
   { event: "3×3 Blindfolded", time: "2:12.94" },
@@ -195,32 +189,13 @@ function PinterestIcon({ className }: { className?: string }) {
   );
 }
 
-function DiscordIcon({ className }: { className?: string }) {
-  return (
-    <svg
-      className={className}
-      viewBox="0 0 24 24"
-      fill="currentColor"
-      aria-hidden="true"
-    >
-      <path d="M20.317 4.369a19.79 19.79 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.211.375-.445.865-.608 1.249a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.036A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128c.126-.094.252-.192.372-.291a.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.009c.12.099.246.198.373.292a.077.077 0 0 1-.006.127 12.3 12.3 0 0 1-1.873.891.077.077 0 0 0-.041.107c.36.699.772 1.364 1.225 1.994a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.056c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.028ZM8.02 15.331c-1.182 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418Zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418Z" />
-    </svg>
-  );
-}
-
 const SOCIALS = [
   { name: "Email", value: "kerzibakthestickmanyt101@gmail.com", href: "mailto:kerzibakthestickmanyt101@gmail.com", icon: Mail },
   { name: "GitHub", value: "github.com/minteez", href: "https://github.com/minteez", icon: Github },
   { name: "Instagram", value: "@sudo.minteez", href: "https://instagram.com/sudo.minteez", icon: Instagram },
   { name: "Pinterest", value: "pinterest.com/dzi45k", href: "https://www.pinterest.com/dzi45k/", icon: PinterestIcon },
   { name: "YouTube", value: "@thecubermint", href: "https://youtube.com/@thecubermint", icon: Youtube },
-  { name: "Discord", value: "sudo.minteez", href: "#", icon: DiscordIcon },
-  { name: "Chess.com", value: "chess.com/member/mint_yt", href: "https://www.chess.com/member/mint_yt", icon: Crown },
-  { name: "CubingTime", value: "cubingtime.com/users/id99492", href: "https://cubingtime.com/users/id99492", icon: Timer },
-  { name: "CubePB", value: "cubepb.com — unofficial PB tracker", href: "https://cubepb.com/i/view?id=1892&expand=0&type=user", icon: Boxes },
-  { name: "Internet Archive", value: "archive.org/@syed_muntasir_muhammad_mint_", href: "https://archive.org/details/@syed_muntasir_muhammad_mint_", icon: Library },
-  { name: "Scratch", value: "scratch.mit.edu/users/thecubermint", href: "https://scratch.mit.edu/users/thecubermint", icon: Blocks },
-  { name: "ROBLOX", value: "web.roblox.com/users/2925195006 · retired since 2024", href: "https://web.roblox.com/users/2925195006/profile", icon: Gamepad2 },
+  { name: "Discord", value: "sudo.minteez", href: "#", icon: MessageCircle },
 ];
 
 /* -------------------------------------------------------------------------- */
@@ -750,38 +725,13 @@ function Achievements() {
 /*  Projects                                                                   */
 /* -------------------------------------------------------------------------- */
 
-const PROJECTS: {
-  title: string;
-  description: string;
-  href: string;
-  tags: string[];
-  icon: React.ComponentType<{ className?: string }>;
-  note?: string;
-}[] = [
+const PROJECTS = [
   {
     title: "Browser Game Hub",
     description:
       "A collection of browser-based games built entirely with Gemini. Every game loads instantly and can be played directly in your browser — no installs, no setup.",
     href: "https://minteez.github.io/browser-game-hub",
     tags: ["Gemini", "Browser Games", "Web Development"],
-    icon: Gamepad2,
-  },
-  {
-    title: "OS Archive",
-    description:
-      "An interactive digital museum dedicated to OS history with a dark retro CRT aesthetic. Explore Windows codenames, macOS, and Linux milestones through visual timelines, comparison tools, an OS family tree, a CLI terminal simulator, and interactive trivia.",
-    href: "https://minteez.github.io/os-archive/",
-    tags: ["Operating Systems", "Retro CRT", "Interactive"],
-    icon: Archive,
-    note: "No longer maintained — updates have stopped.",
-  },
-  {
-    title: "BootArchive",
-    description:
-      "An interactive museum of OS startup history. From 1970s terminal interfaces to modern high-fidelity sequences, it preserves the \u201cfirst impression\u201d of computing through educational simulations and original recreations of the visual evolution of boot experiences.",
-    href: "https://minteez.github.io/bootarchive/",
-    tags: ["Boot Sequences", "Simulation", "Computing History"],
-    icon: Power,
   },
 ];
 
@@ -804,7 +754,7 @@ function Projects() {
               >
                 <div className="mb-6 flex items-center justify-between">
                   <div className="grid h-12 w-12 place-items-center rounded-xl border border-mint/30 bg-mint/10 text-mint">
-                    <p.icon className="h-5 w-5" />
+                    <Gamepad2 className="h-5 w-5" />
                   </div>
                   <ExternalLink className="h-5 w-5 text-mint transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
                 </div>
@@ -812,11 +762,6 @@ function Projects() {
                 <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
                   {p.description}
                 </p>
-                {p.note && (
-                  <p className="mt-4 rounded-xl border border-border bg-muted/30 px-4 py-2 font-mono text-[11px] uppercase tracking-widest text-muted-foreground">
-                    {p.note}
-                  </p>
-                )}
                 <div className="mt-6 flex flex-wrap gap-2">
                   {p.tags.map((t) => (
                     <span
