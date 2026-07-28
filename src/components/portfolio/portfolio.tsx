@@ -1,5 +1,5 @@
 import { motion, useScroll, useTransform } from "motion/react";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type ElementType } from "react";
 import {
   ArrowDown,
   ArrowUpRight,
@@ -200,16 +200,49 @@ function DiscordIcon({ className }: { className?: string }) {
   );
 }
 
-const SOCIALS = [
+function SpotifyIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.539-1.262.24-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z" />
+    </svg>
+  );
+}
+
+function EpicGamesIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M12 2 2 7v10l10 5 10-5V7L12 2zm-1 4h4v2h-4v2h3v2h-3v2h4v2h-6V6h2z" />
+    </svg>
+  );
+}
+
+function ElyByIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M12 2 4 6.5v11L12 22l8-4.5v-11L12 2zm-4 6h5v2H8v-2zm0 4h7v2H8v-2zm0 4h6v2H8v-2z" />
+    </svg>
+  );
+}
+
+const SOCIALS: Array<{
+  name: string;
+  value: string;
+  href: string;
+  icon: ElementType;
+  id?: string;
+}> = [
   { name: "Email", value: "kerzibakthestickmanyt101@gmail.com", href: "mailto:kerzibakthestickmanyt101@gmail.com", icon: Mail },
   { name: "GitHub", value: "github.com/minteez", href: "https://github.com/minteez", icon: Github },
   { name: "Instagram", value: "@sudo.minteez", href: "https://instagram.com/sudo.minteez", icon: Instagram },
   { name: "Pinterest", value: "pinterest.com/dzi45k", href: "https://www.pinterest.com/dzi45k/", icon: PinterestIcon },
   { name: "YouTube", value: "@thecubermint", href: "https://youtube.com/@thecubermint", icon: Youtube },
   { name: "Discord", value: "sudo.minteez", href: "#", icon: DiscordIcon },
+  { name: "Spotify", value: "Minteez", href: "https://open.spotify.com/user/31vgqtxjdj64jakklqq3ojtpht2e", icon: SpotifyIcon },
+  { name: "Ely.by", value: "ely.by/u6947957", href: "https://ely.by/u6947957", icon: ElyByIcon },
+  { name: "Epic Games", value: "sudo.minteez", href: "#", icon: EpicGamesIcon },
   { name: "Chess.com", value: "chess.com/member/mint_yt", href: "https://www.chess.com/member/mint_yt", icon: Puzzle },
   { name: "CubingTime", value: "cubingtime.com/users/id99492", href: "https://cubingtime.com/users/id99492", icon: Timer },
-  { name: "CubePB", value: "All unofficial cubing records", href: "https://cubepb.com/i/view?id=1892&expand=0&type=user", icon: Trophy },
+  { name: "CubePB", value: "All unofficial cubing records", href: "https://cubepb.com/i/view?id=1892&expand=0&type=user", icon: Trophy, id: "cubepb-contact" },
   { name: "Internet Archive", value: "@syed_muntasir_muhammad_mint_", href: "https://archive.org/details/@syed_muntasir_muhammad_mint_", icon: Library },
   { name: "Scratch", value: "scratch.mit.edu/users/thecubermint", href: "https://scratch.mit.edu/users/thecubermint", icon: Sparkles },
   { name: "ROBLOX", value: "Quit since 2024 · kept for identity", href: "https://web.roblox.com/users/2925195006/profile", icon: Gamepad2 },
@@ -636,6 +669,19 @@ function Cubing() {
           ))}
         </div>
 
+        <Reveal delay={0.15}>
+          <p className="mt-8 text-center text-sm text-muted-foreground">
+            ...and more records in{" "}
+            <a
+              href="#cubepb-contact"
+              className="inline-flex items-center gap-1 font-medium text-mint underline decoration-mint/40 underline-offset-4 transition-colors hover:text-mint/80"
+            >
+              my CubePB Profile
+              <ArrowUpRight className="h-3.5 w-3.5" />
+            </a>
+          </p>
+        </Reveal>
+
         <Reveal delay={0.2}>
           <div className="mt-12 rounded-3xl border border-mint/30 bg-mint/5 p-8">
             <p className="font-mono text-xs uppercase tracking-[0.2em] text-mint">
@@ -989,6 +1035,7 @@ function Contact() {
           {SOCIALS.map((s, i) => (
             <Reveal key={s.name} delay={i * 0.05}>
               <a
+                id={s.id}
                 href={s.href}
                 target={s.href.startsWith("http") ? "_blank" : undefined}
                 rel="noreferrer"
