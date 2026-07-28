@@ -228,7 +228,7 @@ const SOCIALS: Array<{
   name: string;
   value: string;
   href: string;
-  icon: React.ElementType;
+  icon: ElementType;
   id?: string;
 }> = [
   { name: "Email", value: "kerzibakthestickmanyt101@gmail.com", href: "mailto:kerzibakthestickmanyt101@gmail.com", icon: Mail },
