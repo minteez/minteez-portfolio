@@ -669,6 +669,19 @@ function Cubing() {
           ))}
         </div>
 
+        <Reveal delay={0.15}>
+          <p className="mt-8 text-center text-sm text-muted-foreground">
+            ...and more records in{" "}
+            <a
+              href="#cubepb-contact"
+              className="inline-flex items-center gap-1 font-medium text-mint underline decoration-mint/40 underline-offset-4 transition-colors hover:text-mint/80"
+            >
+              my CubePB Profile
+              <ArrowUpRight className="h-3.5 w-3.5" />
+            </a>
+          </p>
+        </Reveal>
+
         <Reveal delay={0.2}>
           <div className="mt-12 rounded-3xl border border-mint/30 bg-mint/5 p-8">
             <p className="font-mono text-xs uppercase tracking-[0.2em] text-mint">
