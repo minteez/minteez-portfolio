@@ -1022,6 +1022,7 @@ function Contact() {
           {SOCIALS.map((s, i) => (
             <Reveal key={s.name} delay={i * 0.05}>
               <a
+                id={s.id}
                 href={s.href}
                 target={s.href.startsWith("http") ? "_blank" : undefined}
                 rel="noreferrer"
