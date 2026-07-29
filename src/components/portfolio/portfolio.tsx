@@ -17,6 +17,7 @@ import {
   Lock,
   Mail,
   Mic2,
+  Monitor,
   MonitorPlay,
   Puzzle,
   Shield,
