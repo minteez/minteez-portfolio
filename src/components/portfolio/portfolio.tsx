@@ -225,6 +225,14 @@ function ElyByIcon({ className }: { className?: string }) {
   );
 }
 
+function PlayStationIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 5.5c1.5 0 2.5.7 2.5 2.2 0 1.1-.6 1.7-1.5 2.1v.05c1.2.3 1.9 1.2 1.9 2.4 0 1.7-1.2 2.7-3.1 2.7H7V7.5h3zm-.4 3.5c.6 0 1-.3 1-.9 0-.6-.4-.9-1-.9H8.5v1.8h1.1zm.1 3.7c.7 0 1.1-.4 1.1-1.1 0-.7-.4-1.1-1.1-1.1H8.5v2.2h1.2zm5.3-6.9h1.2v4c0 1.4-.7 2.2-2.1 2.2-1.3 0-2-.8-2-2.2v-4h1.2v3.9c0 .8.3 1.2 1 1.2.6 0 .9-.4.9-1.2v-3.9z" />
+    </svg>
+  );
+}
+
 const SOCIALS: Array<{
   name: string;
   value: string;
