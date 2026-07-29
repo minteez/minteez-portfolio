@@ -255,6 +255,7 @@ const SOCIALS: Array<{
   { name: "Internet Archive", value: "@syed_muntasir_muhammad_mint_", href: "https://archive.org/details/@syed_muntasir_muhammad_mint_", icon: Library },
   { name: "Scratch", value: "scratch.mit.edu/users/thecubermint", href: "https://scratch.mit.edu/users/thecubermint", icon: Sparkles },
   { name: "ROBLOX", value: "Quit since 2024 · kept for identity", href: "https://web.roblox.com/users/2925195006/profile", icon: Gamepad2 },
+  { name: "PlayStation Network", value: "dzi45k", href: "#", icon: PlayStationIcon },
 ];
 
 /* -------------------------------------------------------------------------- */
