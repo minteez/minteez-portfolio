@@ -17,6 +17,7 @@ import {
   Lock,
   Mail,
   Mic2,
+  Monitor,
   MonitorPlay,
   Puzzle,
   Shield,
@@ -224,6 +225,14 @@ function ElyByIcon({ className }: { className?: string }) {
   );
 }
 
+function PlayStationIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 5.5c1.5 0 2.5.7 2.5 2.2 0 1.1-.6 1.7-1.5 2.1v.05c1.2.3 1.9 1.2 1.9 2.4 0 1.7-1.2 2.7-3.1 2.7H7V7.5h3zm-.4 3.5c.6 0 1-.3 1-.9 0-.6-.4-.9-1-.9H8.5v1.8h1.1zm.1 3.7c.7 0 1.1-.4 1.1-1.1 0-.7-.4-1.1-1.1-1.1H8.5v2.2h1.2zm5.3-6.9h1.2v4c0 1.4-.7 2.2-2.1 2.2-1.3 0-2-.8-2-2.2v-4h1.2v3.9c0 .8.3 1.2 1 1.2.6 0 .9-.4.9-1.2v-3.9z" />
+    </svg>
+  );
+}
+
 const SOCIALS: Array<{
   name: string;
   value: string;
@@ -246,6 +255,7 @@ const SOCIALS: Array<{
   { name: "Internet Archive", value: "@syed_muntasir_muhammad_mint_", href: "https://archive.org/details/@syed_muntasir_muhammad_mint_", icon: Library },
   { name: "Scratch", value: "scratch.mit.edu/users/thecubermint", href: "https://scratch.mit.edu/users/thecubermint", icon: Sparkles },
   { name: "ROBLOX", value: "Quit since 2024 · kept for identity", href: "https://web.roblox.com/users/2925195006/profile", icon: Gamepad2 },
+  { name: "PlayStation Network", value: "dzi45k", href: "#", icon: PlayStationIcon },
 ];
 
 /* -------------------------------------------------------------------------- */
@@ -813,6 +823,14 @@ const PROJECTS = [
     href: "https://minteez.github.io/bootarchive/",
     tags: ["Boot Sequences", "Simulation", "Computing History"],
     icon: MonitorPlay,
+  },
+  {
+    title: "VM Playground",
+    description:
+      "A playful virtual-machine sandbox where you can create and run made-up operating systems like MintOS, Aurora Linux, and RetroDOS. Six totally fictional OSes, each with its own personality, boot sequence, and retro-futuristic interface.",
+    href: "https://vmplayground.lovable.app",
+    tags: ["Virtual Machines", "Fictional OS", "Interactive"],
+    icon: Monitor,
   },
 ];
 
