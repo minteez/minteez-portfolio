@@ -823,6 +823,14 @@ const PROJECTS = [
     tags: ["Boot Sequences", "Simulation", "Computing History"],
     icon: MonitorPlay,
   },
+  {
+    title: "VM Playground",
+    description:
+      "A playful virtual-machine sandbox where you can create and run made-up operating systems like MintOS, Aurora Linux, and RetroDOS. Six totally fictional OSes, each with its own personality, boot sequence, and retro-futuristic interface.",
+    href: "https://vmplayground.lovable.app",
+    tags: ["Virtual Machines", "Fictional OS", "Interactive"],
+    icon: Monitor,
+  },
 ];
 
 function Projects() {
