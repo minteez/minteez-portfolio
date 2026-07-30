@@ -233,29 +233,56 @@ function PlayStationIcon({ className }: { className?: string }) {
   );
 }
 
-const SOCIALS: Array<{
+type SocialItem = {
   name: string;
   value: string;
   href: string;
   icon: ElementType;
   id?: string;
-}> = [
-  { name: "Email", value: "kerzibakthestickmanyt101@gmail.com", href: "mailto:kerzibakthestickmanyt101@gmail.com", icon: Mail },
-  { name: "GitHub", value: "github.com/minteez", href: "https://github.com/minteez", icon: Github },
-  { name: "Instagram", value: "@sudo.minteez", href: "https://instagram.com/sudo.minteez", icon: Instagram },
-  { name: "Pinterest", value: "pinterest.com/dzi45k", href: "https://www.pinterest.com/dzi45k/", icon: PinterestIcon },
-  { name: "YouTube", value: "@thecubermint", href: "https://youtube.com/@thecubermint", icon: Youtube },
-  { name: "Discord", value: "sudo.minteez", href: "#", icon: DiscordIcon },
-  { name: "Spotify", value: "Minteez", href: "https://open.spotify.com/user/31vgqtxjdj64jakklqq3ojtpht2e", icon: SpotifyIcon },
-  { name: "Ely.by", value: "ely.by/u6947957", href: "https://ely.by/u6947957", icon: ElyByIcon },
-  { name: "Epic Games", value: "sudo.minteez", href: "#", icon: EpicGamesIcon },
-  { name: "Chess.com", value: "chess.com/member/mint_yt", href: "https://www.chess.com/member/mint_yt", icon: Puzzle },
-  { name: "CubingTime", value: "cubingtime.com/users/id99492", href: "https://cubingtime.com/users/id99492", icon: Timer },
-  { name: "CubePB", value: "All unofficial cubing records", href: "https://cubepb.com/i/view?id=1892&expand=0&type=user", icon: Trophy, id: "cubepb-contact" },
-  { name: "Internet Archive", value: "@syed_muntasir_muhammad_mint_", href: "https://archive.org/details/@syed_muntasir_muhammad_mint_", icon: Library },
-  { name: "Scratch", value: "scratch.mit.edu/users/thecubermint", href: "https://scratch.mit.edu/users/thecubermint", icon: Sparkles },
-  { name: "ROBLOX", value: "Quit since 2024 · kept for identity", href: "https://web.roblox.com/users/2925195006/profile", icon: Gamepad2 },
-  { name: "PlayStation Network", value: "dzi45k", href: "#", icon: PlayStationIcon },
+};
+
+type SocialCategory = {
+  label: string;
+  items: SocialItem[];
+};
+
+const SOCIAL_CATEGORIES: SocialCategory[] = [
+  {
+    label: "Social Media",
+    items: [
+      { name: "Instagram", value: "@sudo.minteez", href: "https://instagram.com/sudo.minteez", icon: Instagram },
+      { name: "Pinterest", value: "pinterest.com/dzi45k", href: "https://www.pinterest.com/dzi45k/", icon: PinterestIcon },
+      { name: "Discord", value: "sudo.minteez", href: "#", icon: DiscordIcon },
+      { name: "Spotify", value: "Minteez", href: "https://open.spotify.com/user/31vgqtxjdj64jakklqq3ojtpht2e", icon: SpotifyIcon },
+    ],
+  },
+  {
+    label: "Games",
+    items: [
+      { name: "Epic Games", value: "sudo.minteez", href: "#", icon: EpicGamesIcon },
+      { name: "Chess.com", value: "chess.com/member/mint_yt", href: "https://www.chess.com/member/mint_yt", icon: Puzzle },
+      { name: "ROBLOX", value: "Quit since 2024 · kept for identity", href: "https://web.roblox.com/users/2925195006/profile", icon: Gamepad2 },
+      { name: "PlayStation Network", value: "dzi45k", href: "#", icon: PlayStationIcon },
+      { name: "Scratch", value: "scratch.mit.edu/users/thecubermint", href: "https://scratch.mit.edu/users/thecubermint", icon: Sparkles },
+      { name: "Ely.by", value: "ely.by/u6947957", href: "https://ely.by/u6947957", icon: ElyByIcon },
+    ],
+  },
+  {
+    label: "Cubing",
+    items: [
+      { name: "CubingTime", value: "cubingtime.com/users/id99492", href: "https://cubingtime.com/users/id99492", icon: Timer },
+      { name: "CubePB", value: "All unofficial cubing records", href: "https://cubepb.com/i/view?id=1892&expand=0&type=user", icon: Trophy, id: "cubepb-contact" },
+    ],
+  },
+  {
+    label: "Other",
+    items: [
+      { name: "Email", value: "kerzibakthestickmanyt101@gmail.com", href: "mailto:kerzibakthestickmanyt101@gmail.com", icon: Mail },
+      { name: "YouTube", value: "@thecubermint", href: "https://youtube.com/@thecubermint", icon: Youtube },
+      { name: "GitHub", value: "github.com/minteez", href: "https://github.com/minteez", icon: Github },
+      { name: "Internet Archive", value: "@syed_muntasir_muhammad_mint_", href: "https://archive.org/details/@syed_muntasir_muhammad_mint_", icon: Library },
+    ],
+  },
 ];
 
 /* -------------------------------------------------------------------------- */
