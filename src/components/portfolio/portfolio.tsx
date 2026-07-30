@@ -233,29 +233,56 @@ function PlayStationIcon({ className }: { className?: string }) {
   );
 }
 
-const SOCIALS: Array<{
+type SocialItem = {
   name: string;
   value: string;
   href: string;
   icon: ElementType;
   id?: string;
-}> = [
-  { name: "Email", value: "kerzibakthestickmanyt101@gmail.com", href: "mailto:kerzibakthestickmanyt101@gmail.com", icon: Mail },
-  { name: "GitHub", value: "github.com/minteez", href: "https://github.com/minteez", icon: Github },
-  { name: "Instagram", value: "@sudo.minteez", href: "https://instagram.com/sudo.minteez", icon: Instagram },
-  { name: "Pinterest", value: "pinterest.com/dzi45k", href: "https://www.pinterest.com/dzi45k/", icon: PinterestIcon },
-  { name: "YouTube", value: "@thecubermint", href: "https://youtube.com/@thecubermint", icon: Youtube },
-  { name: "Discord", value: "sudo.minteez", href: "#", icon: DiscordIcon },
-  { name: "Spotify", value: "Minteez", href: "https://open.spotify.com/user/31vgqtxjdj64jakklqq3ojtpht2e", icon: SpotifyIcon },
-  { name: "Ely.by", value: "ely.by/u6947957", href: "https://ely.by/u6947957", icon: ElyByIcon },
-  { name: "Epic Games", value: "sudo.minteez", href: "#", icon: EpicGamesIcon },
-  { name: "Chess.com", value: "chess.com/member/mint_yt", href: "https://www.chess.com/member/mint_yt", icon: Puzzle },
-  { name: "CubingTime", value: "cubingtime.com/users/id99492", href: "https://cubingtime.com/users/id99492", icon: Timer },
-  { name: "CubePB", value: "All unofficial cubing records", href: "https://cubepb.com/i/view?id=1892&expand=0&type=user", icon: Trophy, id: "cubepb-contact" },
-  { name: "Internet Archive", value: "@syed_muntasir_muhammad_mint_", href: "https://archive.org/details/@syed_muntasir_muhammad_mint_", icon: Library },
-  { name: "Scratch", value: "scratch.mit.edu/users/thecubermint", href: "https://scratch.mit.edu/users/thecubermint", icon: Sparkles },
-  { name: "ROBLOX", value: "Quit since 2024 · kept for identity", href: "https://web.roblox.com/users/2925195006/profile", icon: Gamepad2 },
-  { name: "PlayStation Network", value: "dzi45k", href: "#", icon: PlayStationIcon },
+};
+
+type SocialCategory = {
+  label: string;
+  items: SocialItem[];
+};
+
+const SOCIAL_CATEGORIES: SocialCategory[] = [
+  {
+    label: "Social Media",
+    items: [
+      { name: "Instagram", value: "@sudo.minteez", href: "https://instagram.com/sudo.minteez", icon: Instagram },
+      { name: "Pinterest", value: "pinterest.com/dzi45k", href: "https://www.pinterest.com/dzi45k/", icon: PinterestIcon },
+      { name: "Discord", value: "sudo.minteez", href: "#", icon: DiscordIcon },
+      { name: "Spotify", value: "Minteez", href: "https://open.spotify.com/user/31vgqtxjdj64jakklqq3ojtpht2e", icon: SpotifyIcon },
+    ],
+  },
+  {
+    label: "Games",
+    items: [
+      { name: "Epic Games", value: "sudo.minteez", href: "#", icon: EpicGamesIcon },
+      { name: "Chess.com", value: "chess.com/member/mint_yt", href: "https://www.chess.com/member/mint_yt", icon: Puzzle },
+      { name: "ROBLOX", value: "Quit since 2024 · kept for identity", href: "https://web.roblox.com/users/2925195006/profile", icon: Gamepad2 },
+      { name: "PlayStation Network", value: "dzi45k", href: "#", icon: PlayStationIcon },
+      { name: "Scratch", value: "scratch.mit.edu/users/thecubermint", href: "https://scratch.mit.edu/users/thecubermint", icon: Sparkles },
+      { name: "Ely.by", value: "ely.by/u6947957", href: "https://ely.by/u6947957", icon: ElyByIcon },
+    ],
+  },
+  {
+    label: "Cubing",
+    items: [
+      { name: "CubingTime", value: "cubingtime.com/users/id99492", href: "https://cubingtime.com/users/id99492", icon: Timer },
+      { name: "CubePB", value: "All unofficial cubing records", href: "https://cubepb.com/i/view?id=1892&expand=0&type=user", icon: Trophy, id: "cubepb-contact" },
+    ],
+  },
+  {
+    label: "Other",
+    items: [
+      { name: "Email", value: "kerzibakthestickmanyt101@gmail.com", href: "mailto:kerzibakthestickmanyt101@gmail.com", icon: Mail },
+      { name: "YouTube", value: "@thecubermint", href: "https://youtube.com/@thecubermint", icon: Youtube },
+      { name: "GitHub", value: "github.com/minteez", href: "https://github.com/minteez", icon: Github },
+      { name: "Internet Archive", value: "@syed_muntasir_muhammad_mint_", href: "https://archive.org/details/@syed_muntasir_muhammad_mint_", icon: Library },
+    ],
+  },
 ];
 
 /* -------------------------------------------------------------------------- */
@@ -1049,30 +1076,42 @@ function Contact() {
           title="Let's talk about ideas, cubes, or code."
           subtitle="I'm easiest to reach on email — the rest is where I share what I'm learning."
         />
-        <div className="grid gap-3">
-          {SOCIALS.map((s, i) => (
-            <Reveal key={s.name} delay={i * 0.05}>
-              <a
-                id={s.id}
-                href={s.href}
-                target={s.href.startsWith("http") ? "_blank" : undefined}
-                rel="noreferrer"
-                className="group grid grid-cols-[minmax(0,1fr)_auto] items-center gap-4 rounded-2xl border border-border bg-card/50 px-6 py-5 transition-all hover:border-mint/60 hover:mint-glow sm:flex sm:justify-between"
-              >
-                <div className="flex min-w-0 items-center gap-4">
-                  <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl border border-mint/30 bg-mint/10 text-mint">
-                    <s.icon className="h-4 w-4" />
-                  </div>
-                  <div className="min-w-0">
-                    <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
-                      {s.name}
-                    </p>
-                    <p className="truncate font-medium text-foreground">{s.value}</p>
-                  </div>
-                </div>
-                <ArrowUpRight className="h-5 w-5 shrink-0 text-mint transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-              </a>
-            </Reveal>
+        <div className="grid gap-12 lg:grid-cols-2">
+          {SOCIAL_CATEGORIES.map((category) => (
+            <div key={category.label}>
+              <Reveal>
+                <h3 className="mb-6 flex items-center gap-3 font-mono text-xs uppercase tracking-[0.2em] text-mint">
+                  <span className="h-px w-6 bg-mint" />
+                  {category.label}
+                </h3>
+              </Reveal>
+              <div className="grid gap-3">
+                {category.items.map((s, i) => (
+                  <Reveal key={s.name} delay={i * 0.05}>
+                    <a
+                      id={s.id}
+                      href={s.href}
+                      target={s.href.startsWith("http") ? "_blank" : undefined}
+                      rel="noreferrer"
+                      className="group grid grid-cols-[minmax(0,1fr)_auto] items-center gap-4 rounded-2xl border border-border bg-card/50 px-6 py-5 transition-all hover:border-mint/60 hover:mint-glow sm:flex sm:justify-between"
+                    >
+                      <div className="flex min-w-0 items-center gap-4">
+                        <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl border border-mint/30 bg-mint/10 text-mint">
+                          <s.icon className="h-4 w-4" />
+                        </div>
+                        <div className="min-w-0">
+                          <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
+                            {s.name}
+                          </p>
+                          <p className="truncate font-medium text-foreground">{s.value}</p>
+                        </div>
+                      </div>
+                      <ArrowUpRight className="h-5 w-5 shrink-0 text-mint transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                    </a>
+                  </Reveal>
+                ))}
+              </div>
+            </div>
           ))}
         </div>
       </div>
