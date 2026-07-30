@@ -1076,30 +1076,42 @@ function Contact() {
           title="Let's talk about ideas, cubes, or code."
           subtitle="I'm easiest to reach on email — the rest is where I share what I'm learning."
         />
-        <div className="grid gap-3">
-          {SOCIALS.map((s, i) => (
-            <Reveal key={s.name} delay={i * 0.05}>
-              <a
-                id={s.id}
-                href={s.href}
-                target={s.href.startsWith("http") ? "_blank" : undefined}
-                rel="noreferrer"
-                className="group grid grid-cols-[minmax(0,1fr)_auto] items-center gap-4 rounded-2xl border border-border bg-card/50 px-6 py-5 transition-all hover:border-mint/60 hover:mint-glow sm:flex sm:justify-between"
-              >
-                <div className="flex min-w-0 items-center gap-4">
-                  <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl border border-mint/30 bg-mint/10 text-mint">
-                    <s.icon className="h-4 w-4" />
-                  </div>
-                  <div className="min-w-0">
-                    <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
-                      {s.name}
-                    </p>
-                    <p className="truncate font-medium text-foreground">{s.value}</p>
-                  </div>
-                </div>
-                <ArrowUpRight className="h-5 w-5 shrink-0 text-mint transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-              </a>
-            </Reveal>
+        <div className="grid gap-12 lg:grid-cols-2">
+          {SOCIAL_CATEGORIES.map((category) => (
+            <div key={category.label}>
+              <Reveal>
+                <h3 className="mb-6 flex items-center gap-3 font-mono text-xs uppercase tracking-[0.2em] text-mint">
+                  <span className="h-px w-6 bg-mint" />
+                  {category.label}
+                </h3>
+              </Reveal>
+              <div className="grid gap-3">
+                {category.items.map((s, i) => (
+                  <Reveal key={s.name} delay={i * 0.05}>
+                    <a
+                      id={s.id}
+                      href={s.href}
+                      target={s.href.startsWith("http") ? "_blank" : undefined}
+                      rel="noreferrer"
+                      className="group grid grid-cols-[minmax(0,1fr)_auto] items-center gap-4 rounded-2xl border border-border bg-card/50 px-6 py-5 transition-all hover:border-mint/60 hover:mint-glow sm:flex sm:justify-between"
+                    >
+                      <div className="flex min-w-0 items-center gap-4">
+                        <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl border border-mint/30 bg-mint/10 text-mint">
+                          <s.icon className="h-4 w-4" />
+                        </div>
+                        <div className="min-w-0">
+                          <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
+                            {s.name}
+                          </p>
+                          <p className="truncate font-medium text-foreground">{s.value}</p>
+                        </div>
+                      </div>
+                      <ArrowUpRight className="h-5 w-5 shrink-0 text-mint transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                    </a>
+                  </Reveal>
+                ))}
+              </div>
+            </div>
           ))}
         </div>
       </div>
