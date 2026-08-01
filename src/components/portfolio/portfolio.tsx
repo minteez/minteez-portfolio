@@ -87,7 +87,7 @@ const CUBING = [
   { event: "3×3", time: "8.87s" },
   { event: "2×2", time: "1.06s" },
   { event: "4×4", time: "1:03" },
-  { event: "Megaminx", time: "2:02" },
+  { event: "Megaminx", time: "1:47" },
   { event: "Pyraminx", time: "4.53s" },
   { event: "3×3 One-Handed", time: "20.94s" },
   { event: "3×3 Blindfolded", time: "2:12.94" },
@@ -858,6 +858,14 @@ const PROJECTS = [
     href: "https://vmplayground.lovable.app",
     tags: ["Virtual Machines", "Fictional OS", "Interactive"],
     icon: Monitor,
+  },
+  {
+    title: "The Complete History of Mysore",
+    description:
+      "A comprehensive educational website exploring the rich history, culture, and heritage of Mysore (Mysuru) from ancient times to the present day. It presents historical events, dynasties, rulers, architecture, traditions, and notable personalities through interactive timelines, maps, and galleries, with citations, accessible design, and responsive visuals for students, researchers, and history enthusiasts.",
+    href: "https://mysore-history-vault.lovable.app/",
+    tags: ["History", "Mysore", "Digital Archive", "Educational"],
+    icon: BookOpen,
   },
 ];
 
