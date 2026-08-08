@@ -9,6 +9,7 @@ import {
   ChevronRight,
   Cpu,
   ExternalLink,
+  Feather,
   Gamepad2,
   Github,
   HardDrive,
