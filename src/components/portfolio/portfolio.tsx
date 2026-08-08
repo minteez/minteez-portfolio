@@ -9,7 +9,6 @@ import {
   ChevronRight,
   Cpu,
   ExternalLink,
-  Feather,
   Gamepad2,
   Github,
   HardDrive,
@@ -867,22 +866,6 @@ const PROJECTS = [
     href: "https://mysore-history-vault.lovable.app/",
     tags: ["History", "Mysore", "Digital Archive", "Educational"],
     icon: BookOpen,
-  },
-  {
-    title: "SpeakUp",
-    description:
-      "A free public-speaking guide for students. SpeakUp helps young learners build confidence through practical tips, speech-writing guides, competition strategies, practice techniques, inspiring speaker stories, and motivational resources. A personal passion project created to share lessons learned from my own public-speaking journey — no ads, no login required.",
-    href: "https://speakup-studio.lovable.app/",
-    tags: ["Public Speaking", "Education", "Student Resource"],
-    icon: Mic2,
-  },
-  {
-    title: "Intezaar-E-Dastaan",
-    description:
-      "An elegant Hindi-Urdu poetry website featuring Shayari, Nazm, heartfelt quotes, and reflections on love, انتظار, silence, loneliness, relationships, hope, and life. Every emotion is presented as a story waiting to be felt.",
-    href: "https://id-preview--c2bcb53d-a3e3-4abf-bf25-0ae45a1be066.lovable.app/",
-    tags: ["Poetry", "Shayari", "Hindi-Urdu", "Literature"],
-    icon: Feather,
   },
 ];
 
