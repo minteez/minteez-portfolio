@@ -10,7 +10,6 @@ import {
   Building2,
   Calendar,
   ChevronRight,
-  Code,
   Cpu,
   ExternalLink,
   Feather,
@@ -331,7 +330,6 @@ const SOCIAL_CATEGORIES: SocialCategory[] = [
       { name: "YouTube", value: "@thecubermint", href: "https://youtube.com/@thecubermint", icon: Youtube },
       { name: "GitHub", value: "github.com/minteez", href: "https://github.com/minteez", icon: Github },
       { name: "Internet Archive", value: "@syed_muntasir_muhammad_mint_", href: "https://archive.org/details/@syed_muntasir_muhammad_mint_", icon: Library },
-      { name: "Lovable Profile", value: "lovable.dev/@minteez", href: "https://www.lovable.dev/@minteez", icon: Code },
     ],
   },
 ];
@@ -671,9 +669,8 @@ function Education() {
           {EDUCATION.map((e, i) => (
             <Reveal key={i} delay={i * 0.1}>
               <div
-                className={`relative mb-12 grid gap-6 md:grid-cols-2 ${
-                  i % 2 === 1 ? "md:[&>div:first-child]:col-start-2" : ""
-                }`}
+                className={`relative mb-12 grid gap-6 md:grid-cols-2 ${i % 2 === 1 ? "md:[&>div:first-child]:col-start-2" : ""
+                  }`}
               >
                 <div className="absolute left-4 top-4 -translate-x-1/2 md:left-1/2">
                   <div className="animate-mint-pulse h-3 w-3 rounded-full bg-mint" />
@@ -829,7 +826,7 @@ function Skills() {
     <section id="skills" className="relative border-t border-border/60 py-32">
       <div className="mx-auto max-w-7xl px-6">
         <SectionHeader
-          eyebrow="04 · Skills"
+          eyebrow="03 · Skills"
           title="Sharpening the tools I care about."
           subtitle="Percentages reflect confidence and consistency rather than formal certification."
         />
@@ -860,7 +857,7 @@ function Cubing() {
 
       <div className="mx-auto max-w-7xl px-6">
         <SectionHeader
-          eyebrow="05 · Speedcubing"
+          eyebrow="04 · Speedcubing"
           title="Personal bests, measured in seconds."
           subtitle="A record of my fastest solves across events. Times move as I keep practicing."
         />
@@ -924,7 +921,7 @@ function Leadership() {
     <section id="leadership" className="relative border-t border-border/60 py-32">
       <div className="mx-auto max-w-7xl px-6">
         <SectionHeader
-          eyebrow="06 · Leadership & Activities"
+          eyebrow="05 · Leadership & Activities"
           title="Roles that shaped how I show up."
         />
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -953,7 +950,7 @@ function Achievements() {
     <section id="achievements" className="relative border-t border-border/60 py-32">
       <div className="mx-auto max-w-7xl px-6">
         <SectionHeader
-          eyebrow="07 · Achievements"
+          eyebrow="06 · Achievements"
           title="Small wins that keep me building."
         />
         <div className="grid gap-6 md:grid-cols-2">
@@ -1065,7 +1062,7 @@ function Projects() {
     <section id="projects" className="relative border-t border-border/60 py-32">
       <div className="mx-auto max-w-7xl px-6">
         <SectionHeader
-          eyebrow="08 · Projects"
+          eyebrow="07 · Projects"
           title="Things I've built, one experiment at a time."
         />
         <div className="grid gap-6 md:grid-cols-2">
@@ -1120,7 +1117,7 @@ function Interests() {
     <section id="interests" className="relative border-t border-border/60 py-32">
       <div className="mx-auto max-w-7xl px-6">
         <SectionHeader
-          eyebrow="09 · Interests"
+          eyebrow="08 · Interests"
           title="What I lean toward, on and off the screen."
         />
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
@@ -1147,7 +1144,7 @@ function Goals() {
     <section id="goals" className="relative border-t border-border/60 py-32">
       <div className="mx-auto max-w-7xl px-6">
         <SectionHeader
-          eyebrow="10 · Future Goals"
+          eyebrow="09 · Future Goals"
           title="The next few steps, in order."
         />
         <div className="mx-auto max-w-3xl">
@@ -1212,9 +1209,8 @@ function Quotes() {
               key={idx}
               onClick={() => setI(idx)}
               aria-label={`Quote ${idx + 1}`}
-              className={`h-1 rounded-full transition-all ${
-                idx === i ? "w-8 bg-mint" : "w-4 bg-border"
-              }`}
+              className={`h-1 rounded-full transition-all ${idx === i ? "w-8 bg-mint" : "w-4 bg-border"
+                }`}
             />
           ))}
         </div>
@@ -1238,7 +1234,7 @@ function Facts() {
   return (
     <section className="relative border-t border-border/60 py-32">
       <div className="mx-auto max-w-7xl px-6">
-        <SectionHeader eyebrow="11 · Fun Facts" title="A quick look, in numbers." />
+        <SectionHeader eyebrow="10 · Fun Facts" title="A quick look, in numbers." />
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
           {FACTS.map((f) => (
             <Reveal key={f.label}>
@@ -1271,7 +1267,7 @@ function Contact() {
     <section id="contact" className="relative border-t border-border/60 py-32">
       <div className="mx-auto max-w-5xl px-6">
         <SectionHeader
-          eyebrow="12 · Contact"
+          eyebrow="11 · Contact"
           title="Let's talk about ideas, cubes, or code."
           subtitle="I'm easiest to reach on email — the rest is where I share what I'm learning."
         />
@@ -1351,7 +1347,6 @@ export function Portfolio() {
         <Hero />
         <About />
         <Education />
-        <Certifications />
         <Skills />
         <Cubing />
         <Leadership />
