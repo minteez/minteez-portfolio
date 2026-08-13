@@ -4,9 +4,13 @@ import {
   ArrowDown,
   ArrowUpRight,
   Award,
+  BadgeCheck,
   BookOpen,
   Brain,
+  Building2,
+  Calendar,
   ChevronRight,
+  Code,
   Cpu,
   ExternalLink,
   Feather,
@@ -17,6 +21,7 @@ import {
   Library,
   Lock,
   Mail,
+  Maximize2,
   Mic2,
   Monitor,
   MonitorPlay,
@@ -27,6 +32,7 @@ import {
   Terminal,
   Timer,
   Trophy,
+  X,
   Youtube,
 } from "lucide-react";
 import { Nav } from "./nav";
@@ -66,6 +72,39 @@ const EDUCATION = [
     place: "Riyadh",
     years: "2027 – 2029 · Planned",
     detail: "Science Stream · Computer Science",
+  },
+];
+
+const CERTIFICATIONS = [
+  {
+    title: "Talent Search Examination 2022-23",
+    issuer: "International Indian School, Dammam",
+    date: "January 30, 2023",
+    image: "/cert1.jpg",
+  },
+  {
+    title: "Honour Roll of the Class (Academic Topper)",
+    issuer: "International Indian School, Dammam",
+    date: "March 22, 2023",
+    image: "/cert2.jpg",
+  },
+  {
+    title: "AI Foundations",
+    issuer: "OpenAI Academy",
+    date: "August 9, 2026",
+    image: "/cert3.jpg",
+  },
+  {
+    title: "Applied AI Foundations",
+    issuer: "OpenAI Academy",
+    date: "August 10, 2026",
+    image: "/cert4.jpg",
+  },
+  {
+    title: "Canva Essentials",
+    issuer: "Canva Design School",
+    date: "August 13, 2026",
+    image: "/cert5.jpg",
   },
 ];
 
@@ -126,6 +165,16 @@ const ACHIEVEMENTS = [
   {
     title: "Best Catalyst",
     detail: "Zeal Summer Camp 2026 · Riyadh",
+  },
+  {
+    title: "Grade 6 Talent Search Examination 2022-23",
+    detail: "Rank 11 (74%)",
+    sub: "International Indian School, Dammam · 2023",
+  },
+  {
+    title: "Grade 6 Honour Roll - Academic Topper (2022-23)",
+    detail: "97% Average",
+    sub: "International Indian School, Dammam · 2023",
   },
 ];
 
@@ -282,6 +331,7 @@ const SOCIAL_CATEGORIES: SocialCategory[] = [
       { name: "YouTube", value: "@thecubermint", href: "https://youtube.com/@thecubermint", icon: Youtube },
       { name: "GitHub", value: "github.com/minteez", href: "https://github.com/minteez", icon: Github },
       { name: "Internet Archive", value: "@syed_muntasir_muhammad_mint_", href: "https://archive.org/details/@syed_muntasir_muhammad_mint_", icon: Library },
+      { name: "Lovable Profile", value: "lovable.dev/@minteez", href: "https://www.lovable.dev/@minteez", icon: Code },
     ],
   },
 ];
@@ -646,6 +696,129 @@ function Education() {
 }
 
 /* -------------------------------------------------------------------------- */
+/*  Certifications                                                            */
+/* -------------------------------------------------------------------------- */
+
+function Certifications() {
+  const [selectedCert, setSelectedCert] = useState<(typeof CERTIFICATIONS)[0] | null>(null);
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setSelectedCert(null);
+      }
+    };
+    if (selectedCert) {
+      window.addEventListener("keydown", handleKeyDown);
+    }
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [selectedCert]);
+
+  return (
+    <section id="certifications" className="relative border-t border-border/60 py-32">
+      <div className="mx-auto max-w-7xl px-6">
+        <SectionHeader
+          eyebrow="03 · Certifications"
+          title="Verified achievements & course completions."
+          subtitle="Click on any certificate card to view it in full size."
+        />
+
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {CERTIFICATIONS.map((c, i) => (
+            <Reveal key={c.title} delay={i * 0.08}>
+              <div
+                onClick={() => setSelectedCert(c)}
+                className="group relative flex flex-col overflow-hidden rounded-3xl border border-border bg-card/60 p-6 transition-all duration-300 hover:-translate-y-1 hover:border-mint/50 hover:mint-glow cursor-pointer"
+              >
+                {/* Image preview */}
+                <div className="relative mb-5 aspect-[4/3] w-full overflow-hidden rounded-2xl border border-border/80 bg-background/50">
+                  <img
+                    src={c.image}
+                    alt={c.title}
+                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 flex items-center justify-center bg-background/60 opacity-0 backdrop-blur-[2px] transition-opacity duration-300 group-hover:opacity-100">
+                    <span className="inline-flex items-center gap-2 rounded-full border border-mint/40 bg-mint/10 px-4 py-2 font-mono text-xs text-mint shadow-lg">
+                      <Maximize2 className="h-3.5 w-3.5" />
+                      View Full Size
+                    </span>
+                  </div>
+                </div>
+
+                {/* Details */}
+                <div className="flex flex-1 flex-col justify-between">
+                  <div>
+                    <div className="mb-2 flex items-center justify-between">
+                      <p className="font-mono text-xs uppercase tracking-[0.2em] text-mint">
+                        {String(i + 1).padStart(2, "0")}
+                      </p>
+                      <BadgeCheck className="h-5 w-5 text-mint/70 transition-colors group-hover:text-mint" />
+                    </div>
+                    <h3 className="font-serif text-xl font-medium text-foreground transition-colors group-hover:text-mint">
+                      {c.title}
+                    </h3>
+                  </div>
+
+                  <div className="mt-4 pt-4 border-t border-border/40 space-y-1.5">
+                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                      <Building2 className="h-4 w-4 shrink-0 text-mint/80" />
+                      <span className="truncate">{c.issuer}</span>
+                    </div>
+                    <div className="flex items-center gap-2 text-xs font-mono text-muted-foreground/80">
+                      <Calendar className="h-3.5 w-3.5 shrink-0 text-mint/80" />
+                      <span>{c.date}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+
+        {/* Modal / Lightbox */}
+        {selectedCert && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 md:p-10">
+            <div
+              className="fixed inset-0 bg-background/80 backdrop-blur-md transition-opacity"
+              onClick={() => setSelectedCert(null)}
+            />
+            <div className="relative z-10 flex max-h-[90vh] max-w-4xl w-full flex-col overflow-hidden rounded-3xl border border-border bg-card p-6 shadow-2xl animate-in fade-in zoom-in-95 duration-200">
+              <button
+                onClick={() => setSelectedCert(null)}
+                className="absolute right-4 top-4 z-20 grid h-10 w-10 place-items-center rounded-full border border-border bg-card/80 text-muted-foreground backdrop-blur-sm transition-all hover:border-mint/50 hover:text-foreground"
+                aria-label="Close modal"
+              >
+                <X className="h-5 w-5" />
+              </button>
+              <div className="flex flex-1 items-center justify-center overflow-hidden rounded-2xl bg-background/40 p-2 sm:p-4">
+                <img
+                  src={selectedCert.image}
+                  alt={selectedCert.title}
+                  className="max-h-[68vh] w-auto max-w-full rounded-xl object-contain shadow-md"
+                />
+              </div>
+              <div className="mt-4 flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between px-2">
+                <div>
+                  <h3 className="font-serif text-xl sm:text-2xl text-foreground">
+                    {selectedCert.title}
+                  </h3>
+                  <p className="text-sm text-muted-foreground">
+                    Issued by {selectedCert.issuer}
+                  </p>
+                </div>
+                <p className="font-mono text-xs text-mint shrink-0 sm:text-right">
+                  {selectedCert.date}
+                </p>
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+    </section>
+  );
+}
+
+/* -------------------------------------------------------------------------- */
 /*  Skills                                                                     */
 /* -------------------------------------------------------------------------- */
 
@@ -656,7 +829,7 @@ function Skills() {
     <section id="skills" className="relative border-t border-border/60 py-32">
       <div className="mx-auto max-w-7xl px-6">
         <SectionHeader
-          eyebrow="03 · Skills"
+          eyebrow="04 · Skills"
           title="Sharpening the tools I care about."
           subtitle="Percentages reflect confidence and consistency rather than formal certification."
         />
@@ -687,7 +860,7 @@ function Cubing() {
 
       <div className="mx-auto max-w-7xl px-6">
         <SectionHeader
-          eyebrow="04 · Speedcubing"
+          eyebrow="05 · Speedcubing"
           title="Personal bests, measured in seconds."
           subtitle="A record of my fastest solves across events. Times move as I keep practicing."
         />
@@ -751,7 +924,7 @@ function Leadership() {
     <section id="leadership" className="relative border-t border-border/60 py-32">
       <div className="mx-auto max-w-7xl px-6">
         <SectionHeader
-          eyebrow="05 · Leadership & Activities"
+          eyebrow="06 · Leadership & Activities"
           title="Roles that shaped how I show up."
         />
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -780,7 +953,7 @@ function Achievements() {
     <section id="achievements" className="relative border-t border-border/60 py-32">
       <div className="mx-auto max-w-7xl px-6">
         <SectionHeader
-          eyebrow="06 · Achievements"
+          eyebrow="07 · Achievements"
           title="Small wins that keep me building."
         />
         <div className="grid gap-6 md:grid-cols-2">
@@ -789,7 +962,7 @@ function Achievements() {
               <div className="group relative overflow-hidden rounded-3xl border border-border bg-card/60 p-8 transition-all hover:border-mint/50">
                 <Trophy className="absolute right-6 top-6 h-6 w-6 text-mint/60 transition-all group-hover:text-mint group-hover:mint-glow" />
                 <p className="font-mono text-xs uppercase tracking-[0.2em] text-mint">
-                  0{i + 1}
+                  {String(i + 1).padStart(2, "0")}
                 </p>
                 <h3 className="mt-3 font-serif text-2xl text-foreground">{a.title}</h3>
                 <p className="mt-2 text-sm text-muted-foreground">{a.detail}</p>
@@ -892,7 +1065,7 @@ function Projects() {
     <section id="projects" className="relative border-t border-border/60 py-32">
       <div className="mx-auto max-w-7xl px-6">
         <SectionHeader
-          eyebrow="07 · Projects"
+          eyebrow="08 · Projects"
           title="Things I've built, one experiment at a time."
         />
         <div className="grid gap-6 md:grid-cols-2">
@@ -947,7 +1120,7 @@ function Interests() {
     <section id="interests" className="relative border-t border-border/60 py-32">
       <div className="mx-auto max-w-7xl px-6">
         <SectionHeader
-          eyebrow="08 · Interests"
+          eyebrow="09 · Interests"
           title="What I lean toward, on and off the screen."
         />
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
@@ -974,7 +1147,7 @@ function Goals() {
     <section id="goals" className="relative border-t border-border/60 py-32">
       <div className="mx-auto max-w-7xl px-6">
         <SectionHeader
-          eyebrow="09 · Future Goals"
+          eyebrow="10 · Future Goals"
           title="The next few steps, in order."
         />
         <div className="mx-auto max-w-3xl">
@@ -1065,7 +1238,7 @@ function Facts() {
   return (
     <section className="relative border-t border-border/60 py-32">
       <div className="mx-auto max-w-7xl px-6">
-        <SectionHeader eyebrow="10 · Fun Facts" title="A quick look, in numbers." />
+        <SectionHeader eyebrow="11 · Fun Facts" title="A quick look, in numbers." />
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
           {FACTS.map((f) => (
             <Reveal key={f.label}>
@@ -1098,7 +1271,7 @@ function Contact() {
     <section id="contact" className="relative border-t border-border/60 py-32">
       <div className="mx-auto max-w-5xl px-6">
         <SectionHeader
-          eyebrow="11 · Contact"
+          eyebrow="12 · Contact"
           title="Let's talk about ideas, cubes, or code."
           subtitle="I'm easiest to reach on email — the rest is where I share what I'm learning."
         />
@@ -1178,6 +1351,7 @@ export function Portfolio() {
         <Hero />
         <About />
         <Education />
+        <Certifications />
         <Skills />
         <Cubing />
         <Leadership />

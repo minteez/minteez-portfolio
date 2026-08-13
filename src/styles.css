@@ -223,3 +223,8 @@
 @utility animate-mint-pulse {
   animation: mint-pulse 3s ease-in-out infinite;
 }
+
+/* Hide Lovable watermark badge */
+#lovable-badge {
+  display: none !important;
+}
