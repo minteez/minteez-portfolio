@@ -35,8 +35,8 @@ Some of my personal bests include:
 | --------------- | ------------: |
 | 3×3             |  8.87 seconds |
 | 2×2             |  1.09 seconds |
-| 4×4             |          1:03 |
-| Megaminx        |      **1:47** |
+| 4×4             |          1:03.32 |
+| Megaminx        |      **1:47.43** |
 | Pyraminx        |  4.53 seconds |
 | 3×3 One-Handed  | 20.94 seconds |
 | 3×3 Blindfolded |       2:12.94 |
