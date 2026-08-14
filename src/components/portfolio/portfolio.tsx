@@ -78,7 +78,7 @@ const CERTIFICATIONS = [
   {
     title: "Talent Search Examination 2022-23",
     issuer: "International Indian School, Dammam",
-    date: "January 30, 2023",
+    date: "February 14, 2023",
     image: "/cert1.jpg",
   },
   {
