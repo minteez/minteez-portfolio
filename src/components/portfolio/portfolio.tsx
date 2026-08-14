@@ -74,6 +74,39 @@ const EDUCATION = [
   },
 ];
 
+const CERTIFICATIONS = [
+  {
+    title: "Talent Search Examination 2022-23",
+    issuer: "International Indian School, Dammam",
+    date: "February 14, 2023",
+    image: "https://fgwnypztljhmslgahjrq.supabase.co/storage/v1/object/sign/Certificates/cert1.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV82OWNmOThhNi1mN2I4LTQ2NmUtYmUyZi04YzI0ZGE2Y2I4Y2UiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJDZXJ0aWZpY2F0ZXMvY2VydDEuanBnIiwic2NvcGUiOiJkb3dubG9hZCIsImlhdCI6MTc4NjcxNDk3NiwiZXhwIjo4MDkzOTE0OTc2fQ.RqQYRcDzRkXSJjBD3jJQCND0nRAV20Zw-1pXfiOEyN4",
+  },
+  {
+    title: "Honour Roll of the Class (Academic Topper)",
+    issuer: "International Indian School, Dammam",
+    date: "March 22, 2023",
+    image: "https://fgwnypztljhmslgahjrq.supabase.co/storage/v1/object/sign/Certificates/cert2.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV82OWNmOThhNi1mN2I4LTQ2NmUtYmUyZi04YzI0ZGE2Y2I4Y2UiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJDZXJ0aWZpY2F0ZXMvY2VydDIuanBnIiwic2NvcGUiOiJkb3dubG9hZCIsImlhdCI6MTc4NjcxNTAyNCwiZXhwIjo4MDkzOTE1MDI0fQ.pls0vWcJ27-i82x42cplwzXEv5yX0AN-ksT0jmXQJmo",
+  },
+  {
+    title: "AI Foundations",
+    issuer: "OpenAI Academy",
+    date: "August 9, 2026",
+    image: "https://fgwnypztljhmslgahjrq.supabase.co/storage/v1/object/sign/Certificates/cert3.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV82OWNmOThhNi1mN2I4LTQ2NmUtYmUyZi04YzI0ZGE2Y2I4Y2UiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJDZXJ0aWZpY2F0ZXMvY2VydDMuanBnIiwic2NvcGUiOiJkb3dubG9hZCIsImlhdCI6MTc4NjcxNTAzNywiZXhwIjo4MDkzOTE1MDM3fQ.k335JoPYfpqFQkLQRBhta6duCMtsUMZgCnaa1Y8z1vw",
+  },
+  {
+    title: "Applied AI Foundations",
+    issuer: "OpenAI Academy",
+    date: "August 10, 2026",
+    image: "https://fgwnypztljhmslgahjrq.supabase.co/storage/v1/object/sign/Certificates/cert4.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV82OWNmOThhNi1mN2I4LTQ2NmUtYmUyZi04YzI0ZGE2Y2I4Y2UiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJDZXJ0aWZpY2F0ZXMvY2VydDQuanBnIiwic2NvcGUiOiJkb3dubG9hZCIsImlhdCI6MTc4NjcxNTA1NSwiZXhwIjo4MDkzOTE1MDU1fQ.PfKSxUafMK1CX80Vjp7oo_f4pokteRuOIoFoxLE7YUc",
+  },
+  {
+    title: "Canva Essentials",
+    issuer: "Canva Design School",
+    date: "August 13, 2026",
+    image: "https://fgwnypztljhmslgahjrq.supabase.co/storage/v1/object/sign/Certificates/cert5.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV82OWNmOThhNi1mN2I4LTQ2NmUtYmUyZi04YzI0ZGE2Y2I4Y2UiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJDZXJ0aWZpY2F0ZXMvY2VydDUuanBnIiwic2NvcGUiOiJkb3dubG9hZCIsImlhdCI6MTc4NjcxNTA3NCwiZXhwIjo4MDkzOTE1MDc0fQ.IXvJV_IQVlSZt57H0XJJmCgC1vPryE3BMbKHSuG0B_Y",
+  },
+];
+
 const SKILLS = [
   { name: "Learning Ability", value: 99 },
   { name: "Discipline", value: 98 },
