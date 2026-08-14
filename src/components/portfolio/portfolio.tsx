@@ -74,8 +74,6 @@ const EDUCATION = [
   },
 ];
 
-
-
 const SKILLS = [
   { name: "Learning Ability", value: 99 },
   { name: "Discipline", value: 98 },
