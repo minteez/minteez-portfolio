@@ -66,6 +66,7 @@ Currently, it includes:
 
 * **2 certifications from International Indian School, Dammam**
 * **2 certifications from OpenAI Academy**
+* **1 certification from Canva Design School**
 
 As I continue learning, this collection will expand with additional certifications and accomplishments.
 
