@@ -873,7 +873,7 @@ function Certifications() {
                     <h4 className="font-serif text-xl text-foreground transition-colors group-hover:text-mint">
                       {c.title}
                     </h4>
-                    <div className="mt-auto space-y-1.5 border-t border-border/40 pt-4 mt-4">
+                    <div className="mt-4 space-y-1.5 border-t border-border/40 pt-4">
                       <div className="flex items-center gap-2 text-sm text-muted-foreground">
                         <Building2 className="h-4 w-4 shrink-0 text-mint/80" />
                         <span className="truncate">{c.issuer}</span>
@@ -1196,7 +1196,7 @@ function Projects() {
               >
                 <div className="mb-5 flex items-center justify-between">
                   <div className="grid h-10 w-10 place-items-center rounded-xl border border-mint/30 bg-mint/10 text-mint">
-                    <p.icon className="h-4.5 w-4.5" />
+                    <p.icon className="h-4 w-4" />
                   </div>
                   <ExternalLink className="h-4 w-4 text-mint transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
                 </div>
