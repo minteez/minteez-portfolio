@@ -6,6 +6,11 @@ import {
   Award,
   BadgeCheck,
   BookOpen,
+  Car,
+  Code2,
+  Heart,
+  Music,
+
   Brain,
   Building2,
   Calendar,
