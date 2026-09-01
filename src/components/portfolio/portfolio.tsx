@@ -1467,6 +1467,7 @@ export function Portfolio() {
         <Hero />
         <About />
         <Education />
+        <Certifications />
         <Skills />
         <Cubing />
         <Leadership />
