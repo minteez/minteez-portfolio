@@ -1192,15 +1192,15 @@ function Projects() {
                 href={p.href}
                 target="_blank"
                 rel="noreferrer"
-                className="group block overflow-hidden rounded-3xl border border-border bg-card/60 p-8 transition-all hover:-translate-y-1 hover:border-mint/60 hover:mint-glow"
+                className="group block h-full overflow-hidden rounded-3xl border border-border bg-card/60 p-6 transition-all hover:-translate-y-1 hover:border-mint/60 hover:mint-glow"
               >
-                <div className="mb-6 flex items-center justify-between">
-                  <div className="grid h-12 w-12 place-items-center rounded-xl border border-mint/30 bg-mint/10 text-mint">
-                    <p.icon className="h-5 w-5" />
+                <div className="mb-5 flex items-center justify-between">
+                  <div className="grid h-10 w-10 place-items-center rounded-xl border border-mint/30 bg-mint/10 text-mint">
+                    <p.icon className="h-4.5 w-4.5" />
                   </div>
-                  <ExternalLink className="h-5 w-5 text-mint transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                  <ExternalLink className="h-4 w-4 text-mint transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
                 </div>
-                <h3 className="font-serif text-2xl text-foreground">{p.title}</h3>
+                <h3 className="font-serif text-xl text-foreground">{p.title}</h3>
                 <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
                   {p.description}
                 </p>
