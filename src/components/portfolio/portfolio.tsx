@@ -1185,7 +1185,7 @@ function Projects() {
           eyebrow="07 · Projects"
           title="Things I've built, one experiment at a time."
         />
-        <div className="grid gap-6 md:grid-cols-2">
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {PROJECTS.map((p, i) => (
             <Reveal key={p.title} delay={i * 0.08}>
               <a
