@@ -370,6 +370,7 @@ const SOCIAL_CATEGORIES: SocialCategory[] = [
       { name: "PlayStation Network", value: "dzi45k", href: "#", icon: PlayStationIcon },
       { name: "Scratch", value: "scratch.mit.edu/users/thecubermint", href: "https://scratch.mit.edu/users/thecubermint", icon: Sparkles },
       { name: "Ely.by", value: "ely.by/u6947957", href: "https://ely.by/u6947957", icon: ElyByIcon },
+      { name: "SuperTuxKart", value: "minteez@stk", href: "#", icon: Car },
     ],
   },
   {
