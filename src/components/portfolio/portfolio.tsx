@@ -833,6 +833,65 @@ function Certifications() {
           ))}
         </div>
 
+        {/* Courses & credentials */}
+        <div className="mt-20">
+          <div className="mb-8 flex items-center gap-4">
+            <h3 className="font-mono text-xs uppercase tracking-[0.3em] text-mint">
+              Courses & Credentials
+            </h3>
+            <span className="h-px flex-1 bg-border" />
+          </div>
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {COURSES.map((c, i) => {
+              const Wrapper = c.url ? "a" : "div";
+              return (
+                <Reveal key={c.title + c.date} delay={i * 0.06}>
+                  <Wrapper
+                    {...(c.url ? { href: c.url, target: "_blank", rel: "noreferrer" } : {})}
+                    className="group flex h-full flex-col rounded-3xl border border-border bg-card/60 p-6 transition-all hover:-translate-y-1 hover:border-mint/50 hover:mint-glow"
+                  >
+                    <div className="mb-5 flex items-start justify-between gap-4">
+                      <div className="grid h-12 w-12 shrink-0 place-items-center rounded-xl border border-border bg-background/60 p-2.5">
+                        <img
+                          src={c.logo}
+                          alt={`${c.issuer} logo`}
+                          loading="lazy"
+                          className={`h-full w-full object-contain ${c.invertOnDark ? "dark:invert" : ""}`}
+                        />
+                      </div>
+                      <span className="inline-flex items-center gap-1 rounded-full border border-mint/30 bg-mint/5 px-3 py-1 font-mono text-[10px] uppercase tracking-widest text-mint">
+                        {c.url ? (
+                          <>
+                            Credential
+                            <ArrowUpRight className="h-3 w-3 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                          </>
+                        ) : (
+                          "Verified"
+                        )}
+                      </span>
+                    </div>
+                    <h4 className="font-serif text-xl text-foreground transition-colors group-hover:text-mint">
+                      {c.title}
+                    </h4>
+                    <div className="mt-auto space-y-1.5 border-t border-border/40 pt-4 mt-4">
+                      <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                        <Building2 className="h-4 w-4 shrink-0 text-mint/80" />
+                        <span className="truncate">{c.issuer}</span>
+                      </div>
+                      <div className="flex items-center gap-2 font-mono text-xs text-muted-foreground/80">
+                        <Calendar className="h-3.5 w-3.5 shrink-0 text-mint/80" />
+                        <span>{c.date}</span>
+                      </div>
+                    </div>
+                  </Wrapper>
+                </Reveal>
+              );
+            })}
+          </div>
+        </div>
+
+
+
         {/* Modal / Lightbox */}
         {selectedCert && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 md:p-10">
