@@ -112,6 +112,57 @@ const CERTIFICATIONS = [
   },
 ];
 
+const COURSES = [
+  {
+    title: "AI Foundations",
+    issuer: "OpenAI Academy",
+    date: "August 9, 2026",
+    logo: "https://svgl.app/library/openai.svg",
+    invertOnDark: true,
+    url: "https://academy.openai.com/public/certificate/sadd5x8xyx",
+  },
+  {
+    title: "Applied AI Foundations",
+    issuer: "OpenAI Academy",
+    date: "August 10, 2026",
+    logo: "https://svgl.app/library/openai.svg",
+    invertOnDark: true,
+    url: "https://academy.openai.com/public/certificate/km5f6yefcd",
+  },
+  {
+    title: "AI Fluency for Students",
+    issuer: "Anthropic · Skilljar",
+    date: "August 19, 2026",
+    logo: "https://svgl.app/library/anthropic_black.svg",
+    invertOnDark: true,
+    url: "https://verify.skilljar.com/c/x9oijefnfuyq",
+  },
+  {
+    title: "Canva Essentials",
+    issuer: "Canva Design School",
+    date: "August 13, 2026",
+    logo: "https://svgl.app/library/canva.svg",
+    invertOnDark: false,
+    url: "https://www.canva.com/design-school/certification-award/1b0965b1-ea64-49e2-aa77-f27ba76498a2",
+  },
+  {
+    title: "AI Skills for Students",
+    issuer: "Canva Design School",
+    date: "August 23, 2026",
+    logo: "https://svgl.app/library/canva.svg",
+    invertOnDark: false,
+    url: "https://www.canva.com/design-school/certification-award/0bf7ba9b-815f-446f-95c0-9528f1c7fe76",
+  },
+  {
+    title: "Introduction to Generative AI",
+    issuer: "Google Skills",
+    date: "August 25, 2026",
+    logo: "https://svgl.app/library/google.svg",
+    invertOnDark: false,
+    url: "https://www.skills.google/public_profiles/502a9251-4ffa-48a1-9da1-8bc25587b589/badges/27225506",
+  },
+];
+
 const SKILLS = [
   { name: "Learning Ability", value: 99 },
   { name: "Discipline", value: 98 },
