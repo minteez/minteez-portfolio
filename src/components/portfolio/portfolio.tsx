@@ -92,6 +92,12 @@ const CERTIFICATIONS = [
     date: "March 22, 2023",
     image: "https://fgwnypztljhmslgahjrq.supabase.co/storage/v1/object/sign/Certificates/cert2.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV82OWNmOThhNi1mN2I4LTQ2NmUtYmUyZi04YzI0ZGE2Y2I4Y2UiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJDZXJ0aWZpY2F0ZXMvY2VydDIuanBnIiwic2NvcGUiOiJkb3dubG9hZCIsImlhdCI6MTc4NjcxNTAyNCwiZXhwIjo4MDkzOTE1MDI0fQ.pls0vWcJ27-i82x42cplwzXEv5yX0AN-ksT0jmXQJmo",
   },
+  {
+    title: "AI Superstar Course Completion",
+    issuer: "Zeal International Company",
+    date: "September 5, 2026",
+    image: "https://fgwnypztljhmslgahjrq.supabase.co/storage/v1/object/sign/Certificates/Muntasir%20-%20AI%20Superstar%20Course_page-0001.jpg?token=eyJraWQiOiI2OWNmOThhNi1mN2I4LTQ2NmUtYmUyZi04YzI0ZGE2Y2I4Y2UiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJDZXJ0aWZpY2F0ZXMvTXVudGFzaXIgLSBBSSBTdXBlcnN0YXIgQ291cnNlX3BhZ2UtMDAwMS5qcGciLCJzY29wZSI6ImRvd25sb2FkIiwiaWF0IjoxNzg4ODY4NDE3LCJleHAiOjgwOTYwNjg0MTd9.1eqYZTusOlwgi7d9QyGlBNuEyxKJQH98OlUGZ6Engyw",
+  },
 ];
 
 const COURSES = [
