@@ -6,6 +6,11 @@ import {
   Award,
   BadgeCheck,
   BookOpen,
+  Car,
+  Code2,
+  Heart,
+  Music,
+
   Brain,
   Building2,
   Calendar,
@@ -79,31 +84,70 @@ const CERTIFICATIONS = [
     title: "Talent Search Examination 2022-23",
     issuer: "International Indian School, Dammam",
     date: "February 14, 2023",
-    image: "/cert1.jpg",
+    image: "https://fgwnypztljhmslgahjrq.supabase.co/storage/v1/object/sign/Certificates/cert1.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV82OWNmOThhNi1mN2I4LTQ2NmUtYmUyZi04YzI0ZGE2Y2I4Y2UiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJDZXJ0aWZpY2F0ZXMvY2VydDEuanBnIiwic2NvcGUiOiJkb3dubG9hZCIsImlhdCI6MTc4NjcxNDk3NiwiZXhwIjo4MDkzOTE0OTc2fQ.RqQYRcDzRkXSJjBD3jJQCND0nRAV20Zw-1pXfiOEyN4",
   },
   {
     title: "Honour Roll of the Class (Academic Topper)",
     issuer: "International Indian School, Dammam",
     date: "March 22, 2023",
-    image: "/cert2.jpg",
+    image: "https://fgwnypztljhmslgahjrq.supabase.co/storage/v1/object/sign/Certificates/cert2.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV82OWNmOThhNi1mN2I4LTQ2NmUtYmUyZi04YzI0ZGE2Y2I4Y2UiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJDZXJ0aWZpY2F0ZXMvY2VydDIuanBnIiwic2NvcGUiOiJkb3dubG9hZCIsImlhdCI6MTc4NjcxNTAyNCwiZXhwIjo4MDkzOTE1MDI0fQ.pls0vWcJ27-i82x42cplwzXEv5yX0AN-ksT0jmXQJmo",
   },
+  {
+    title: "AI Superstar Course Completion",
+    issuer: "Zeal International Company",
+    date: "September 5, 2026",
+    image: "https://fgwnypztljhmslgahjrq.supabase.co/storage/v1/object/sign/Certificates/Muntasir%20-%20AI%20Superstar%20Course_page-0001.jpg?token=eyJraWQiOiI2OWNmOThhNi1mN2I4LTQ2NmUtYmUyZi04YzI0ZGE2Y2I4Y2UiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJDZXJ0aWZpY2F0ZXMvTXVudGFzaXIgLSBBSSBTdXBlcnN0YXIgQ291cnNlX3BhZ2UtMDAwMS5qcGciLCJzY29wZSI6ImRvd25sb2FkIiwiaWF0IjoxNzg4ODY4NDE3LCJleHAiOjgwOTYwNjg0MTd9.1eqYZTusOlwgi7d9QyGlBNuEyxKJQH98OlUGZ6Engyw",
+  },
+];
+
+const COURSES = [
   {
     title: "AI Foundations",
     issuer: "OpenAI Academy",
     date: "August 9, 2026",
-    image: "/cert3.jpg",
+    logo: "https://svgl.app/library/openai.svg",
+    invertOnDark: true,
+    url: "https://academy.openai.com/public/certificate/sadd5x8xyx",
   },
   {
     title: "Applied AI Foundations",
     issuer: "OpenAI Academy",
     date: "August 10, 2026",
-    image: "/cert4.jpg",
+    logo: "https://svgl.app/library/openai.svg",
+    invertOnDark: true,
+    url: "https://academy.openai.com/public/certificate/km5f6yefcd",
+  },
+  {
+    title: "AI Fluency for Students",
+    issuer: "Anthropic · Skilljar",
+    date: "August 19, 2026",
+    logo: "https://svgl.app/library/anthropic_black.svg",
+    invertOnDark: true,
+    url: "https://verify.skilljar.com/c/x9oijefnfuyq",
   },
   {
     title: "Canva Essentials",
     issuer: "Canva Design School",
     date: "August 13, 2026",
-    image: "/cert5.jpg",
+    logo: "https://svgl.app/library/canva.svg",
+    invertOnDark: false,
+    url: "https://www.canva.com/design-school/certification-award/1b0965b1-ea64-49e2-aa77-f27ba76498a2",
+  },
+  {
+    title: "AI Skills for Students",
+    issuer: "Canva Design School",
+    date: "August 23, 2026",
+    logo: "https://svgl.app/library/canva.svg",
+    invertOnDark: false,
+    url: "https://www.canva.com/design-school/certification-award/0bf7ba9b-815f-446f-95c0-9528f1c7fe76",
+  },
+  {
+    title: "Introduction to Generative AI",
+    issuer: "Google Skills",
+    date: "August 25, 2026",
+    logo: "https://svgl.app/library/google.svg",
+    invertOnDark: false,
+    url: "https://www.skills.google/public_profiles/502a9251-4ffa-48a1-9da1-8bc25587b589/badges/27225506",
   },
 ];
 
@@ -314,6 +358,7 @@ const SOCIAL_CATEGORIES: SocialCategory[] = [
       { name: "PlayStation Network", value: "dzi45k", href: "#", icon: PlayStationIcon },
       { name: "Scratch", value: "scratch.mit.edu/users/thecubermint", href: "https://scratch.mit.edu/users/thecubermint", icon: Sparkles },
       { name: "Ely.by", value: "ely.by/u6947957", href: "https://ely.by/u6947957", icon: ElyByIcon },
+      { name: "SuperTuxKart", value: "minteez@stk", href: "#", icon: Car },
     ],
   },
   {
@@ -330,6 +375,10 @@ const SOCIAL_CATEGORIES: SocialCategory[] = [
       { name: "YouTube", value: "@thecubermint", href: "https://youtube.com/@thecubermint", icon: Youtube },
       { name: "GitHub", value: "github.com/minteez", href: "https://github.com/minteez", icon: Github },
       { name: "Internet Archive", value: "@syed_muntasir_muhammad_mint_", href: "https://archive.org/details/@syed_muntasir_muhammad_mint_", icon: Library },
+      { name: "Lovable", value: "@minteez", href: "https://www.lovable.dev/@minteez", icon: Heart },
+      { name: "LeetCode", value: "minteez", href: "https://leetcode.com/u/minteez/", icon: Code2 },
+      { name: "pwn.college", value: "minteez", href: "#", icon: Terminal },
+      { name: "Suno AI", value: "minteez", href: "https://suno.com/@minteez", icon: Music },
     ],
   },
 ];
@@ -772,6 +821,65 @@ function Certifications() {
           ))}
         </div>
 
+        {/* Courses & credentials */}
+        <div className="mt-20">
+          <div className="mb-8 flex items-center gap-4">
+            <h3 className="font-mono text-xs uppercase tracking-[0.3em] text-mint">
+              Courses & Credentials
+            </h3>
+            <span className="h-px flex-1 bg-border" />
+          </div>
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {COURSES.map((c, i) => {
+              const Wrapper = c.url ? "a" : "div";
+              return (
+                <Reveal key={c.title + c.date} delay={i * 0.06}>
+                  <Wrapper
+                    {...(c.url ? { href: c.url, target: "_blank", rel: "noreferrer" } : {})}
+                    className="group flex h-full flex-col rounded-3xl border border-border bg-card/60 p-6 transition-all hover:-translate-y-1 hover:border-mint/50 hover:mint-glow"
+                  >
+                    <div className="mb-5 flex items-start justify-between gap-4">
+                      <div className="grid h-12 w-12 shrink-0 place-items-center rounded-xl border border-border bg-background/60 p-2.5">
+                        <img
+                          src={c.logo}
+                          alt={`${c.issuer} logo`}
+                          loading="lazy"
+                          className={`h-full w-full object-contain ${c.invertOnDark ? "dark:invert" : ""}`}
+                        />
+                      </div>
+                      <span className="inline-flex items-center gap-1 rounded-full border border-mint/30 bg-mint/5 px-3 py-1 font-mono text-[10px] uppercase tracking-widest text-mint">
+                        {c.url ? (
+                          <>
+                            Credential
+                            <ArrowUpRight className="h-3 w-3 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                          </>
+                        ) : (
+                          "Verified"
+                        )}
+                      </span>
+                    </div>
+                    <h4 className="font-serif text-xl text-foreground transition-colors group-hover:text-mint">
+                      {c.title}
+                    </h4>
+                    <div className="mt-4 space-y-1.5 border-t border-border/40 pt-4">
+                      <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                        <Building2 className="h-4 w-4 shrink-0 text-mint/80" />
+                        <span className="truncate">{c.issuer}</span>
+                      </div>
+                      <div className="flex items-center gap-2 font-mono text-xs text-muted-foreground/80">
+                        <Calendar className="h-3.5 w-3.5 shrink-0 text-mint/80" />
+                        <span>{c.date}</span>
+                      </div>
+                    </div>
+                  </Wrapper>
+                </Reveal>
+              );
+            })}
+          </div>
+        </div>
+
+
+
         {/* Modal / Lightbox */}
         {selectedCert && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 md:p-10">
@@ -1065,22 +1173,22 @@ function Projects() {
           eyebrow="07 · Projects"
           title="Things I've built, one experiment at a time."
         />
-        <div className="grid gap-6 md:grid-cols-2">
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {PROJECTS.map((p, i) => (
             <Reveal key={p.title} delay={i * 0.08}>
               <a
                 href={p.href}
                 target="_blank"
                 rel="noreferrer"
-                className="group block overflow-hidden rounded-3xl border border-border bg-card/60 p-8 transition-all hover:-translate-y-1 hover:border-mint/60 hover:mint-glow"
+                className="group block h-full overflow-hidden rounded-3xl border border-border bg-card/60 p-6 transition-all hover:-translate-y-1 hover:border-mint/60 hover:mint-glow"
               >
-                <div className="mb-6 flex items-center justify-between">
-                  <div className="grid h-12 w-12 place-items-center rounded-xl border border-mint/30 bg-mint/10 text-mint">
-                    <p.icon className="h-5 w-5" />
+                <div className="mb-5 flex items-center justify-between">
+                  <div className="grid h-10 w-10 place-items-center rounded-xl border border-mint/30 bg-mint/10 text-mint">
+                    <p.icon className="h-4 w-4" />
                   </div>
-                  <ExternalLink className="h-5 w-5 text-mint transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                  <ExternalLink className="h-4 w-4 text-mint transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
                 </div>
-                <h3 className="font-serif text-2xl text-foreground">{p.title}</h3>
+                <h3 className="font-serif text-xl text-foreground">{p.title}</h3>
                 <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
                   {p.description}
                 </p>
@@ -1347,6 +1455,7 @@ export function Portfolio() {
         <Hero />
         <About />
         <Education />
+        <Certifications />
         <Skills />
         <Cubing />
         <Leadership />
@@ -1362,4 +1471,3 @@ export function Portfolio() {
     </div>
   );
 }
-// force image rebuild
