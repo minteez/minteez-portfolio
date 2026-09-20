@@ -1201,6 +1201,21 @@ function Projects() {
             </Reveal>
           ))}
         </div>
+
+        <Reveal delay={0.15}>
+          <p className="mt-8 text-center text-sm text-muted-foreground">
+            ...and more projects in{" "}
+            <a
+              href="https://minteez.github.io/mintverse"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-1 font-medium text-mint underline decoration-mint/40 underline-offset-4 transition-colors hover:text-mint/80"
+            >
+              Mintverse
+              <ArrowUpRight className="h-3.5 w-3.5" />
+            </a>
+          </p>
+        </Reveal>
       </div>
     </section>
   );
