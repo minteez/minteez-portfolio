@@ -30,6 +30,7 @@ import {
   Monitor,
   MonitorPlay,
   Puzzle,
+  Rocket,
   Shield,
   Sparkles,
   Target,
@@ -1104,6 +1105,22 @@ const PROJECTS = [
     icon: Gamepad2,
   },
   {
+    title: "MathLab",
+    description:
+      "An interactive mathematics learning and exploration website created for my Science Exhibition, combining curriculum-based learning with interactive mathematical experiments and explorations.",
+    href: "https://mathlab.bolt.host",
+    tags: ["Mathematics", "Interactive Learning", "Science Exhibition"],
+    icon: Brain,
+  },
+  {
+    title: "NASA Space Invaders: Nebula Command Deck",
+    description:
+      "A retro 2D arcade Space Invaders game built in Vanilla JS & HTML5 Canvas. Features a Nebula Command Deck bento grid dashboard UI, an integrated 8-bit sound synthesizer, and dynamic space battle backdrops fetched live using NASA's Astronomy Picture of the Day (APOD) API.",
+    href: "https://minteez.github.io/nasa-space-invaders",
+    tags: ["Vanilla JS", "HTML5 Canvas", "NASA APOD"],
+    icon: Rocket,
+  },
+  {
     title: "OS Archive",
     description:
       "An interactive digital museum dedicated to OS history with a dark retro CRT aesthetic. Explore Windows codenames, macOS, and Linux milestones through visual timelines, comparison tools, an OS family tree, a CLI terminal simulator, and interactive trivia.",
@@ -1151,7 +1168,6 @@ const PROJECTS = [
     href: "https://intezaar-e-dastaan.lovable.app/",
     tags: ["Hindi-Urdu Poetry", "Shayari", "Nazm"],
     icon: Feather,
-    note: "Currently in preview mode — URL will be updated once published.",
   },
 ];
 
