@@ -358,7 +358,7 @@ const SOCIAL_CATEGORIES: SocialCategory[] = [
       { name: "PlayStation Network", value: "dzi45k", href: "#", icon: PlayStationIcon },
       { name: "Scratch", value: "scratch.mit.edu/users/thecubermint", href: "https://scratch.mit.edu/users/thecubermint", icon: Sparkles },
       { name: "Ely.by", value: "ely.by/u6947957", href: "https://ely.by/u6947957", icon: ElyByIcon },
-      { name: "SuperTuxKart", value: "minteez@stk", href: "#", icon: Car },
+      { name: "SuperTuxKart", value: "minteez@stk", href: "https://online.supertuxkart.net/users.php?user=minteez", icon: Car },
     ],
   },
   {
@@ -378,7 +378,7 @@ const SOCIAL_CATEGORIES: SocialCategory[] = [
       { name: "Lovable", value: "@minteez", href: "https://www.lovable.dev/@minteez", icon: Heart },
       { name: "Obsidian Account", value: "minteez", href: "https://community.obsidian.md/users/minteez", icon: BookOpen },
       { name: "LeetCode", value: "minteez", href: "https://leetcode.com/u/minteez/", icon: Code2 },
-      { name: "pwn.college", value: "minteez", href: "#", icon: Terminal },
+      { name: "pwn.college", value: "minteez", href: "n: Terminal },
       { name: "Suno AI", value: "minteez", href: "https://suno.com/@minteez", icon: Music },
     ],
   },
