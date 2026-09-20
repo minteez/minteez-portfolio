@@ -1,4 +1,5 @@
 # Syed Muntasir Muhammad — Personal Portfolio
+<img width="1585" height="900" alt="image" src="https://github.com/user-attachments/assets/6683d648-52be-4769-b7ef-1909f2a3a1e2" />
 
 Welcome to the personal portfolio of **Syed Muntasir Muhammad**, also known as **Mint** — a Grade 10 CBSE student passionate about **cybersecurity, computers, mathematics, speedcubing, public speaking, and technology**.
 
