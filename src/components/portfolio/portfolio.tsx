@@ -378,7 +378,7 @@ const SOCIAL_CATEGORIES: SocialCategory[] = [
       { name: "Lovable", value: "@minteez", href: "https://www.lovable.dev/@minteez", icon: Heart },
       { name: "Obsidian Account", value: "minteez", href: "https://community.obsidian.md/users/minteez", icon: BookOpen },
       { name: "LeetCode", value: "minteez", href: "https://leetcode.com/u/minteez/", icon: Code2 },
-      { name: "pwn.college", value: "minteez", href: "n: Terminal },
+      { name: "pwn.college", value: "minteez", href: "#", icon: Terminal },
       { name: "Suno AI", value: "minteez", href: "https://suno.com/@minteez", icon: Music },
     ],
   },
