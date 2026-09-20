@@ -504,19 +504,8 @@ function Hero() {
           style={{ animationDelay: "-8s" }}
         />
       </div>
-
       <motion.div style={{ y, opacity }} className="relative z-10 mx-auto grid w-full max-w-7xl gap-16 px-6 lg:grid-cols-[1.4fr_1fr] lg:items-center">
         <div>
-          <Reveal>
-            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-mint/30 bg-mint/5 px-3 py-1.5 font-mono text-[11px] uppercase tracking-[0.2em] text-mint">
-              <span className="relative flex h-1.5 w-1.5">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-mint opacity-75" />
-                <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-mint" />
-              </span>
-              Available for opportunities
-            </div>
-          </Reveal>
-
           <Reveal delay={0.05}>
             <p className="mb-3 font-mono text-sm text-muted-foreground">Hi, I'm</p>
           </Reveal>
@@ -569,7 +558,7 @@ function Hero() {
         <Reveal delay={0.3} className="flex justify-center lg:justify-end">
           <div className="relative">
             <div className="animate-spin-slow absolute -inset-6 rounded-full border border-dashed border-mint/30" />
-            <div className="animate-mint-pulse relative h-64 w-64 overflow-hidden rounded-full border border-mint/40 bg-gradient-to-br from-mint/20 via-background to-background sm:h-80 sm:w-80">
+            <div className="animate-mint-pulse relative h-72 w-72 overflow-hidden rounded-full border border-mint/40 bg-gradient-to-br from-mint/20 via-background to-background sm:h-[22rem] sm:w-[22rem]">
               <img
                 src={profileAsset.url}
                 alt="Syed Muntasir — Mint"
