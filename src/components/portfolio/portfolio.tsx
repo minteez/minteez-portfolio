@@ -621,28 +621,28 @@ function About() {
           <Reveal>
             <div className="space-y-5 text-base leading-relaxed text-muted-foreground md:text-lg">
               <p>
-                I'm currently a Grade 10 student following the CBSE curriculum,
-                studying at Modern International School in Riyadh. Ever since
-                I picked up my first computer, I've been fascinated by how
-                machines think, how systems talk to each other, and how a few
-                lines of thoughtful code can shape entire experiences.
+                I’m a Coorg/Kodava descendant and an NRI Kodava, born in
+                Khobar, Saudi Arabia, with family roots in Coorg (Kodagu),
+                Karnataka, India. That mix of heritage and global upbringing has
+                shaped how I think: curious, grounded, and always looking for
+                the deeper pattern behind things.
               </p>
               <p>
-                My deepest interests sit at the intersection of{" "}
-                <span className="text-foreground">cybersecurity</span>,{" "}
-                <span className="text-foreground">operating systems</span>,
-                and <span className="text-foreground">mathematics</span>. I
-                spend a lot of time reading books, watching lectures, and
-                slowly building the foundations I'll need to pursue ethical
-                hacking and security research in the future.
+                As a multi-skilled Grade 10 CBSE student, I’m drawn to
+                mathematics, computers and operating systems, cybersecurity, AI
+                and generative AI, prompt engineering, and the creative side of
+                vibe coding and AI-assisted development. I enjoy building
+                ideas, testing them, and learning from the process. Beyond the
+                screen, I care about public speaking, leadership, speedcubing,
+                reading, and writing—because I believe strong thinking and
+                strong communication go hand in hand.
               </p>
               <p>
-                Outside of computers, I lead where I can — as a school
-                magazine editor, a student leader, an assembly anchor, and a
-                regular voice in speech and quiz competitions. I love talking
-                about ideas, teaching what I learn, and hopefully inspiring
-                other students who are just as curious about technology as I
-                am.
+                My journey has moved from Coorg roots to NRI life, from curiosity
+                to mathematics and computers, then to AI, cybersecurity, and
+                leadership. I hope to keep growing in that path, and one day
+                become the NRI version of the AI Kid of India, in the humble idea
+                of learning, building, and inspiring others.
               </p>
             </div>
           </Reveal>
