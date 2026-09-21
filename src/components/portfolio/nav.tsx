@@ -17,12 +17,37 @@ const links = [
 export function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [activeId, setActiveId] = useState("about");
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
     onScroll();
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    const sections = links
+      .map((link) => document.getElementById(link.id))
+      .filter(Boolean) as HTMLElement[];
+
+    if (!sections.length) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visibleEntry = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+
+        if (visibleEntry) {
+          setActiveId(visibleEntry.target.id);
+        }
+      },
+      { rootMargin: "-35% 0px -45% 0px", threshold: [0.2, 0.4, 0.6] },
+    );
+
+    sections.forEach((section) => observer.observe(section));
+    return () => observer.disconnect();
   }, []);
 
   return (
@@ -34,7 +59,7 @@ export function Nav() {
       }`}
     >
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-        <a href="#top" className="group flex items-center gap-2">
+        <a href="#top" className="group flex items-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-mint/60 focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-lg">
           <span className="grid h-8 w-8 place-items-center rounded-lg border border-mint/40 bg-mint/10 font-serif text-sm font-semibold text-mint transition-all group-hover:mint-glow">
             M
           </span>
@@ -45,18 +70,27 @@ export function Nav() {
             <a
               key={l.id}
               href={`#${l.id}`}
-              className="text-sm text-muted-foreground transition-colors hover:text-mint"
+              aria-current={activeId === l.id ? "page" : undefined}
+              className={`relative text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-mint/60 focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-full px-2 py-1 ${
+                activeId === l.id
+                  ? "text-mint"
+                  : "text-muted-foreground hover:text-mint"
+              }`}
             >
               {l.label}
+              {activeId === l.id && (
+                <span className="absolute -bottom-1.5 left-1/2 h-px w-5 -translate-x-1/2 bg-mint" />
+              )}
             </a>
           ))}
         </div>
         <div className="flex items-center gap-3">
           <ThemeToggle />
           <button
-            className="grid h-10 w-10 place-items-center rounded-full border border-border lg:hidden"
+            className="grid h-10 w-10 place-items-center rounded-full border border-border transition-colors hover:border-mint focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-mint/60 focus-visible:ring-offset-2 focus-visible:ring-offset-background lg:hidden"
             onClick={() => setOpen(!open)}
-            aria-label="Menu"
+            aria-expanded={open}
+            aria-label="Toggle menu"
           >
             <span className="flex flex-col gap-1">
               <span className="h-px w-4 bg-foreground" />
@@ -74,7 +108,10 @@ export function Nav() {
                 key={l.id}
                 href={`#${l.id}`}
                 onClick={() => setOpen(false)}
-                className="py-3 text-sm text-muted-foreground transition-colors hover:text-mint"
+                aria-current={activeId === l.id ? "page" : undefined}
+                className={`py-3 text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-mint/60 focus-visible:ring-offset-2 focus-visible:ring-offset-background ${
+                  activeId === l.id ? "text-mint" : "text-muted-foreground hover:text-mint"
+                }`}
               >
                 {l.label}
               </a>

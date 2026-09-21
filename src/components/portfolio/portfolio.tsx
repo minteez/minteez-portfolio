@@ -52,9 +52,10 @@ import profileAsset from "@/assets/mint-profile.png.asset.json";
 /* -------------------------------------------------------------------------- */
 
 const TYPEWRITER_ROLES = [
-  "Grade 10 Student",
-  "Future Cybersecurity Specialist",
-  "Mathematics Enthusiast",
+  "Cybersecurity Aspirant",
+  "Math Enthusiast",
+  "Prompt Engineer",
+  "Vibe Coder",
   "Speedcuber",
   "Public Speaker",
 ];
@@ -662,6 +663,10 @@ function About() {
                   <dd className="font-medium text-mint">Mint</dd>
                 </div>
                 <div className="flex justify-between border-b border-border/60 pb-3">
+                  <dt className="text-muted-foreground">Identity</dt>
+                  <dd className="font-medium text-mint">Coorg/Kodava • NRI</dd>
+                </div>
+                <div className="flex justify-between border-b border-border/60 pb-3">
                   <dt className="text-muted-foreground">Grade</dt>
                   <dd className="font-medium">10 · CBSE</dd>
                 </div>
@@ -764,8 +769,17 @@ function Certifications() {
           {CERTIFICATIONS.map((c, i) => (
             <Reveal key={c.title} delay={i * 0.08}>
               <div
+                role="button"
+                tabIndex={0}
+                aria-label={`Open certificate: ${c.title}`}
                 onClick={() => setSelectedCert(c)}
-                className="group relative flex flex-col overflow-hidden rounded-3xl border border-border bg-card/60 p-6 transition-all duration-300 hover:-translate-y-1 hover:border-mint/50 hover:mint-glow cursor-pointer"
+                onKeyDown={(event) => {
+                  if (event.key === "Enter" || event.key === " ") {
+                    event.preventDefault();
+                    setSelectedCert(c);
+                  }
+                }}
+                className="group relative flex cursor-pointer flex-col overflow-hidden rounded-3xl border border-border bg-card/60 p-6 transition-all duration-300 hover:-translate-y-1 hover:border-mint/50 hover:mint-glow focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-mint/60 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
               >
                 {/* Image preview */}
                 <div className="relative mb-5 aspect-[4/3] w-full overflow-hidden rounded-2xl border border-border/80 bg-background/50">
@@ -977,11 +991,24 @@ function Cubing() {
         </div>
 
         <Reveal delay={0.15}>
+          <div className="mt-6 flex justify-center">
+            <div className="inline-flex items-center gap-3 rounded-full border border-mint/30 bg-background/60 px-4 py-2 text-[10px] uppercase tracking-[0.22em] text-muted-foreground shadow-[0_0_0_1px_rgba(135,255,211,0.08)]">
+              <span className="relative flex h-2.5 w-2.5 items-center justify-center" aria-label="Timer running">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-mint/60" />
+                <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-mint" />
+              </span>
+              <span className="font-mono text-mint">00:08.87</span>
+              <span>3x3 PB</span>
+            </div>
+          </div>
+        </Reveal>
+
+        <Reveal delay={0.2}>
           <p className="mt-8 text-center text-sm text-muted-foreground">
             ...and more records in{" "}
             <a
               href="#cubepb-contact"
-              className="inline-flex items-center gap-1 font-medium text-mint underline decoration-mint/40 underline-offset-4 transition-colors hover:text-mint/80"
+              className="inline-flex items-center gap-1 font-medium text-mint underline decoration-mint/40 underline-offset-4 transition-colors hover:text-mint/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-mint/60 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
             >
               my CubePB Profile
               <ArrowUpRight className="h-3.5 w-3.5" />
@@ -989,7 +1016,7 @@ function Cubing() {
           </p>
         </Reveal>
 
-        <Reveal delay={0.2}>
+        <Reveal delay={0.25}>
           <div className="mt-12 rounded-3xl border border-mint/30 bg-mint/5 p-8">
             <p className="font-mono text-xs uppercase tracking-[0.2em] text-mint">
               Currently learning
