@@ -714,8 +714,8 @@ function Hero() {
         {/* Avatar */}
         <Reveal delay={0.3} className="flex justify-center lg:justify-end">
           <div className="relative">
-            <div className="animate-spin-slow absolute -inset-6 rounded-full border border-dashed border-mint/30" />
-            <div className="animate-mint-pulse relative h-72 w-72 overflow-hidden rounded-full border border-mint/40 bg-gradient-to-br from-mint/20 via-background to-background sm:h-[22rem] sm:w-[22rem]">
+            <div className="animate-spin-slow absolute -inset-6 rounded-full border border-dashed border-mint/70 shadow-[0_0_24px_-6px_var(--mint)]" />
+            <div className="animate-mint-pulse relative h-72 w-72 overflow-hidden rounded-full border-2 border-mint/80 bg-gradient-to-br from-mint/20 via-background to-background shadow-[0_0_28px_-8px_var(--mint)] sm:h-[22rem] sm:w-[22rem]">
               <img
                 src={heroImage}
                 alt="Syed Muntasir — Mint"
