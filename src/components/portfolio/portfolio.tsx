@@ -45,7 +45,7 @@ import { Typewriter } from "./typewriter";
 import { Counter } from "./counter";
 import { CursorGlow } from "./cursor-glow";
 import { Reveal } from "./reveal";
-import profileAsset from "@/assets/mint-profile.png.asset.json";
+import heroImage from "@/assets/image_mx001.jpg";
 
 /* -------------------------------------------------------------------------- */
 /*  Data                                                                       */
@@ -562,7 +562,7 @@ function Hero() {
             <div className="animate-spin-slow absolute -inset-6 rounded-full border border-dashed border-mint/30" />
             <div className="animate-mint-pulse relative h-72 w-72 overflow-hidden rounded-full border border-mint/40 bg-gradient-to-br from-mint/20 via-background to-background sm:h-[22rem] sm:w-[22rem]">
               <img
-                src={profileAsset.url}
+                src={heroImage}
                 alt="Syed Muntasir — Mint"
                 className="h-full w-full object-cover"
                 loading="eager"
