@@ -558,14 +558,107 @@ function Loader() {
 
 function Hero() {
   const ref = useRef<HTMLDivElement>(null);
+  const vantaRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
   const y = useTransform(scrollYProgress, [0, 1], [0, 200]);
   const opacity = useTransform(scrollYProgress, [0, 1], [1, 0]);
 
+  useEffect(() => {
+    if (!vantaRef.current) return;
+
+    type VantaEffect = { destroy: () => void };
+    type VantaWindow = Window & {
+      THREE?: unknown;
+      VANTA?: {
+        WAVES: (options: {
+          el: HTMLElement;
+          THREE: unknown;
+          mouseControls: boolean;
+          touchControls: boolean;
+          gyroControls: boolean;
+          minHeight: number;
+          minWidth: number;
+          scale: number;
+          scaleMobile: number;
+          color: number;
+          shininess: number;
+          waveHeight: number;
+          waveSpeed: number;
+          zoom: number;
+        }) => VantaEffect;
+      };
+    };
+
+    const loadScript = (src: string) =>
+      new Promise<void>((resolve, reject) => {
+        const existing = document.querySelector<HTMLScriptElement>(`script[src="${src}"]`);
+        if (existing) {
+          if (existing.dataset.loaded === "true" || existing.dataset.loading !== "true") {
+            resolve();
+            return;
+          }
+          existing.addEventListener("load", () => resolve(), { once: true });
+          existing.addEventListener("error", () => reject(new Error(`Failed to load ${src}`)), { once: true });
+          return;
+        }
+
+        const script = document.createElement("script");
+        script.src = src;
+        script.async = true;
+        script.dataset.loading = "true";
+        script.addEventListener("load", () => {
+          script.dataset.loaded = "true";
+          delete script.dataset.loading;
+          resolve();
+        }, { once: true });
+        script.addEventListener("error", () => reject(new Error(`Failed to load ${src}`)), { once: true });
+        document.head.appendChild(script);
+      });
+
+    let effect: VantaEffect | undefined;
+    let cancelled = false;
+
+    const initializeWaves = async () => {
+      try {
+        await loadScript("https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js");
+        await loadScript("https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.waves.min.js");
+
+        const browserWindow = window as VantaWindow;
+        if (cancelled || !vantaRef.current || !browserWindow.THREE || !browserWindow.VANTA) return;
+
+        effect = browserWindow.VANTA.WAVES({
+          el: vantaRef.current,
+          THREE: browserWindow.THREE,
+          mouseControls: true,
+          touchControls: true,
+          gyroControls: false,
+          minHeight: 200,
+          minWidth: 200,
+          scale: 1,
+          scaleMobile: 1,
+          color: 0x1404,
+          shininess: 65,
+          waveHeight: 19.5,
+          waveSpeed: 1.3,
+          zoom: 0.87,
+        });
+      } catch {
+        // Keep the normal Hero background if an external script is unavailable.
+      }
+    };
+
+    void initializeWaves();
+
+    return () => {
+      cancelled = true;
+      effect?.destroy();
+    };
+  }, []);
+
   return (
     <section id="top" ref={ref} className="relative flex min-h-screen items-center overflow-hidden pt-28">
       {/* grid backdrop */}
-      <div className="absolute inset-0 grid-bg opacity-40" />
+      <div ref={vantaRef} aria-hidden="true" className="absolute inset-0 grid-bg opacity-40" />
       <div className="absolute inset-x-0 top-0 h-[60vh] bg-gradient-to-b from-transparent via-transparent to-background" />
 
       <motion.div style={{ y, opacity }} className="relative z-10 mx-auto grid w-full max-w-7xl gap-16 px-6 lg:grid-cols-[1.4fr_1fr] lg:items-center">
