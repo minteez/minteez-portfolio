@@ -182,8 +182,7 @@ const CUBING = [
 const LEARNING = ["5×5", "Skewb", "4×4 Blindfolded"];
 
 const LEADERSHIP = [
-  { title: "Magazine Editor", icon: BookOpen },
-  { title: "Student Leader", icon: Sparkles },
+  { title: "Magazine Editor · Elected School Leader", icon: BookOpen },
   { title: "School Assembly Anchor", icon: Mic2 },
   { title: "News Reader", icon: Mic2 },
   { title: "Public Speaker", icon: Mic2 },
@@ -195,9 +194,9 @@ const LEADERSHIP = [
 
 const ACHIEVEMENTS = [
   {
-    title: "First Position",
-    detail: "Best Mathematics Model · School Science Exhibition",
-    sub: "Rubik's Cube Functioning Model",
+    title: "2x Science Exhibition Champion",
+    detail: "Best Mathematics Still Model for School Science Exhibition · 2025 and 2026",
+    sub: "2025 - Rubik's Cube Functioning Model (1st position); 2026 - MathLab Website (1st position)",
   },
   {
     title: "95% · Class Topper",
@@ -205,21 +204,17 @@ const ACHIEVEMENTS = [
   },
   {
     title: "Magazine Editor",
-    detail: "Won School Parliament Election",
+    detail: "Elected Magazine Editor for the 2026–27 academic year",
+    sub: "One of five School Parliament cabinet posts, alongside Head Boy, Deputy Head Boy, Sports Captain, and Arts Secretary",
   },
   {
     title: "Best Catalyst",
     detail: "Zeal Summer Camp 2026 · Riyadh",
   },
   {
-    title: "Grade 6 Talent Search Examination 2022-23",
-    detail: "Rank 11 (74%)",
-    sub: "International Indian School, Dammam · 2023",
-  },
-  {
-    title: "Grade 6 Honour Roll - Academic Topper (2022-23)",
-    detail: "97% Average",
-    sub: "International Indian School, Dammam · 2023",
+    title: "4x Hindi Speech Winner",
+    detail: "January 2024 - 2nd Position · January 2025 - 1st Position · September 2025 - 2nd Position · September 2026 - 1st Position",
+    sub: "World Hindi Day and National Hindi Day recognitions",
   },
 ];
 
@@ -675,8 +670,7 @@ function About() {
     "Mathematics",
     "Operating Systems",
     "Public Speaker",
-    "Student Leader",
-    "Magazine Editor",
+    "Elected School Leader · Magazine Editor",
   ];
   return (
     <section id="about" className="relative border-t border-border/60 py-32">
