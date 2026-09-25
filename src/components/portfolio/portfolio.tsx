@@ -45,7 +45,7 @@ import { Typewriter } from "./typewriter";
 import { Counter } from "./counter";
 import { CursorGlow } from "./cursor-glow";
 import { Reveal } from "./reveal";
-import heroImage from "@/assets/image_mx001.jpg";
+import heroImage from "@/assets/image_mx001.png";
 
 /* -------------------------------------------------------------------------- */
 /*  Data                                                                       */
@@ -328,6 +328,85 @@ function PlayStationIcon({ className }: { className?: string }) {
   );
 }
 
+function InstagramIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <rect x="3.5" y="3.5" width="17" height="17" rx="5" stroke="currentColor" strokeWidth="1.8" />
+      <circle cx="12" cy="12" r="4.2" stroke="currentColor" strokeWidth="1.8" />
+      <circle cx="17.2" cy="6.8" r="1.2" fill="currentColor" />
+    </svg>
+  );
+}
+
+function ChessIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M7 4.5h10v2.1H16v2.7h2.2v2.7H5.8V9.3H8V6.6h-1V4.5Zm-1.4 9h12.8v2.2H15v3.1H9v-3.1H5.6v-2.2Zm3 2.2h4.8v1.7H7.6v-1.7Z" fill="currentColor" />
+      <path d="M5.2 19h13.6v1.3H5.2z" fill="currentColor" />
+    </svg>
+  );
+}
+
+function RobloxIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M8.3 2.8 2.8 8.3l1.5 7.4L15.7 21l5.5-5.5-1.5-7.4L8.3 2.8Zm2.9 5.1 6.4-.9-.9 6.4-6.4.9.9-6.4Z" />
+    </svg>
+  );
+}
+
+function ScratchIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M12 3.5c-2 0-3.7 1.6-3.7 3.7 0 .8.2 1.5.6 2.2L6.5 11.7A2.3 2.3 0 0 0 7 14.5h2.5l.7.8a3.2 3.2 0 0 0 2.6 1.4h2.3c1.6 0 2.9-1.3 2.9-2.9v-2.2c0-1.7-1.4-3.1-3.1-3.1h-2.5c-.7 0-1.3-.5-1.3-1.2 0-.7.6-1.3 1.3-1.3h2.2c.7 0 1.3.6 1.3 1.3h1.5c0-1.8-1.5-3.3-3.3-3.3H12Z" />
+      <path d="M6.7 11.4c-1.2 0-2.2 1-2.2 2.2 0 1.2 1 2.1 2.2 2.1H9l-2.3-4.3Z" opacity="0.8" />
+    </svg>
+  );
+}
+
+function InternetArchiveIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M4 7.5h16v9H4z" stroke="currentColor" strokeWidth="1.7" />
+      <path d="M6 10.5h12M6 13.5h12M8.5 7.5V5.8M15.5 7.5V5.8M12 7.5V5.8" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
+      <path d="M10 16.5h4v-3.5h-4z" fill="currentColor" />
+    </svg>
+  );
+}
+
+function LovableIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M12 21.35 10.55 20C5.4 15.36 2 12.28 2 8.5A4.5 4.5 0 0 1 6.5 4c1.74 0 3.41.81 4.5 2.09A6.19 6.19 0 0 1 15.5 4 4.5 4.5 0 0 1 20 8.5c0 3.78-3.4 6.86-8.55 11.5L12 21.35Z" />
+    </svg>
+  );
+}
+
+function LeetCodeIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M9.2 4.2a1.2 1.2 0 0 1 1.7 0l4.2 4.2a1.2 1.2 0 0 1 0 1.7l-2.4 2.4 2.3 2.3a1.2 1.2 0 0 1 0 1.7l-1.7 1.7a1.2 1.2 0 0 1-1.7 0L7.2 15.1a1.2 1.2 0 0 1 0-1.7l2.5-2.5-2.6-2.6a1.2 1.2 0 0 1 0-1.7L9.2 4.2Zm2.8 6.3 1.7-1.7-1.7-1.7-1.7 1.7 1.7 1.7Z" fill="currentColor" />
+    </svg>
+  );
+}
+
+function PwnCollegeIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M5 8.5 12 4l7 4.5v7L12 20l-7-4.5v-7Zm7 2.4 4.6 2.8-4.6 2.9-4.6-2.9 4.6-2.8Z" stroke="currentColor" strokeWidth="1.7" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+function SunoIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M12 2.6a1.7 1.7 0 0 1 1.7 1.7v1.7a1.7 1.7 0 1 1-3.4 0V4.3A1.7 1.7 0 0 1 12 2.6Zm7.1 4.4a1.7 1.7 0 0 1 0 2.4l-1.2 1.2a1.7 1.7 0 1 1-2.4-2.4l1.2-1.2a1.7 1.7 0 0 1 2.4 0ZM18.7 12a1.7 1.7 0 0 1 1.7 1.7v1.8a1.7 1.7 0 1 1-3.4 0v-1.8a1.7 1.7 0 0 1 1.7-1.7ZM12 16.2a1.7 1.7 0 0 1 1.7 1.7v1.8a1.7 1.7 0 1 1-3.4 0v-1.8A1.7 1.7 0 0 1 12 16.2Zm-7.1-3.5a1.7 1.7 0 0 1 2.4 0l1.2 1.2A1.7 1.7 0 0 1 7.7 16.3l-1.2-1.2a1.7 1.7 0 0 1 0-2.4ZM8.3 7.8a1.7 1.7 0 0 1 0 2.4L7.1 11.4A1.7 1.7 0 1 1 4.7 9l1.2-1.2a1.7 1.7 0 0 1 2.4 0Z" fill="currentColor" />
+      <circle cx="12" cy="12" r="3.2" fill="currentColor" opacity="0.8" />
+    </svg>
+  );
+}
+
 type SocialItem = {
   name: string;
   value: string;
@@ -345,7 +424,7 @@ const SOCIAL_CATEGORIES: SocialCategory[] = [
   {
     label: "Social Media",
     items: [
-      { name: "Instagram", value: "@sudo.minteez", href: "https://instagram.com/sudo.minteez", icon: Instagram },
+      { name: "Instagram", value: "@sudo.minteez", href: "https://instagram.com/sudo.minteez", icon: InstagramIcon },
       { name: "Pinterest", value: "pinterest.com/dzi45k", href: "https://www.pinterest.com/dzi45k/", icon: PinterestIcon },
       { name: "Discord", value: "sudo.minteez", href: "#", icon: DiscordIcon },
       { name: "Spotify", value: "Minteez", href: "https://open.spotify.com/user/31vgqtxjdj64jakklqq3ojtpht2e", icon: SpotifyIcon },
@@ -355,10 +434,10 @@ const SOCIAL_CATEGORIES: SocialCategory[] = [
     label: "Games",
     items: [
       { name: "Epic Games", value: "sudo.minteez", href: "#", icon: EpicGamesIcon },
-      { name: "Chess.com", value: "chess.com/member/mint_yt", href: "https://www.chess.com/member/mint_yt", icon: Puzzle },
-      { name: "ROBLOX", value: "Quit since 2024 · kept for identity", href: "https://web.roblox.com/users/2925195006/profile", icon: Gamepad2 },
+      { name: "Chess.com", value: "chess.com/member/mint_yt", href: "https://www.chess.com/member/mint_yt", icon: ChessIcon },
+      { name: "ROBLOX", value: "Quit since 2024 · kept for identity", href: "https://web.roblox.com/users/2925195006/profile", icon: RobloxIcon },
       { name: "PlayStation Network", value: "dzi45k", href: "#", icon: PlayStationIcon },
-      { name: "Scratch", value: "scratch.mit.edu/users/thecubermint", href: "https://scratch.mit.edu/users/thecubermint", icon: Sparkles },
+      { name: "Scratch", value: "scratch.mit.edu/users/thecubermint", href: "https://scratch.mit.edu/users/thecubermint", icon: ScratchIcon },
       { name: "Ely.by", value: "ely.by/u6947957", href: "https://ely.by/u6947957", icon: ElyByIcon },
       { name: "SuperTuxKart", value: "minteez@stk", href: "https://online.supertuxkart.net/users.php?user=minteez", icon: Car },
     ],
@@ -376,12 +455,12 @@ const SOCIAL_CATEGORIES: SocialCategory[] = [
       { name: "Email", value: "kerzibakthestickmanyt101@gmail.com", href: "mailto:kerzibakthestickmanyt101@gmail.com", icon: Mail },
       { name: "YouTube", value: "@thecubermint", href: "https://youtube.com/@thecubermint", icon: Youtube },
       { name: "GitHub", value: "github.com/minteez", href: "https://github.com/minteez", icon: Github },
-      { name: "Internet Archive", value: "@syed_muntasir_muhammad_mint_", href: "https://archive.org/details/@syed_muntasir_muhammad_mint_", icon: Library },
-      { name: "Lovable", value: "@minteez", href: "https://www.lovable.dev/@minteez", icon: Heart },
+      { name: "Internet Archive", value: "@syed_muntasir_muhammad_mint_", href: "https://archive.org/details/@syed_muntasir_muhammad_mint_", icon: InternetArchiveIcon },
+      { name: "Lovable", value: "@minteez", href: "https://www.lovable.dev/@minteez", icon: LovableIcon },
       { name: "Obsidian Account", value: "minteez", href: "https://community.obsidian.md/users/minteez", icon: BookOpen },
-      { name: "LeetCode", value: "minteez", href: "https://leetcode.com/u/minteez/", icon: Code2 },
-      { name: "pwn.college", value: "minteez", href: "#", icon: Terminal },
-      { name: "Suno AI", value: "minteez", href: "https://suno.com/@minteez", icon: Music },
+      { name: "LeetCode", value: "minteez", href: "https://leetcode.com/u/minteez/", icon: LeetCodeIcon },
+      { name: "pwn.college", value: "minteez", href: "#", icon: PwnCollegeIcon },
+      { name: "Suno AI", value: "minteez", href: "https://suno.com/@minteez", icon: SunoIcon },
     ],
   },
 ];
