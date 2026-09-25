@@ -1573,10 +1573,96 @@ function Facts() {
 /* -------------------------------------------------------------------------- */
 
 function Contact() {
+  const contactVantaRef = useRef<HTMLDivElement>(null);
   const [openCategories, setOpenCategories] = useState<Record<string, boolean>>({});
 
+  useEffect(() => {
+    if (!contactVantaRef.current) return;
+
+    type VantaEffect = { destroy: () => void };
+    type VantaWindow = Window & {
+      THREE?: unknown;
+      VANTA?: {
+        NET: (options: {
+          el: HTMLElement;
+          mouseControls: boolean;
+          touchControls: boolean;
+          gyroControls: boolean;
+          minHeight: number;
+          minWidth: number;
+          scale: number;
+          scaleMobile: number;
+          color: number;
+          backgroundColor: number;
+        }) => VantaEffect;
+      };
+    };
+
+    const loadScript = (src: string) =>
+      new Promise<void>((resolve, reject) => {
+        const existing = document.querySelector<HTMLScriptElement>(`script[src="${src}"]`);
+        if (existing) {
+          if (existing.dataset.loaded === "true" || existing.dataset.loading !== "true") {
+            resolve();
+            return;
+          }
+          existing.addEventListener("load", () => resolve(), { once: true });
+          existing.addEventListener("error", () => reject(new Error(`Failed to load ${src}`)), { once: true });
+          return;
+        }
+
+        const script = document.createElement("script");
+        script.src = src;
+        script.async = true;
+        script.dataset.loading = "true";
+        script.addEventListener("load", () => {
+          script.dataset.loaded = "true";
+          delete script.dataset.loading;
+          resolve();
+        }, { once: true });
+        script.addEventListener("error", () => reject(new Error(`Failed to load ${src}`)), { once: true });
+        document.head.appendChild(script);
+      });
+
+    let effect: VantaEffect | undefined;
+    let cancelled = false;
+
+    const initializeNet = async () => {
+      try {
+        await loadScript("https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js");
+        await loadScript("https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js");
+
+        const browserWindow = window as VantaWindow;
+        if (cancelled || !contactVantaRef.current || !browserWindow.THREE || !browserWindow.VANTA) return;
+
+        effect = browserWindow.VANTA.NET({
+          el: contactVantaRef.current,
+          mouseControls: true,
+          touchControls: true,
+          gyroControls: false,
+          minHeight: 200,
+          minWidth: 200,
+          scale: 1,
+          scaleMobile: 1,
+          color: 0x7afcb6,
+          backgroundColor: 0x0,
+        });
+      } catch {
+        // Keep the normal Contacts background if an external script is unavailable.
+      }
+    };
+
+    void initializeNet();
+
+    return () => {
+      cancelled = true;
+      effect?.destroy();
+    };
+  }, []);
+
   return (
-    <section id="contact" className="relative border-t border-border/60 py-32">
+    <section id="contact" className="relative overflow-hidden border-t border-border/60 py-32">
+      <div ref={contactVantaRef} aria-hidden="true" className="pointer-events-none absolute inset-0 opacity-35" />
       <div className="mx-auto max-w-5xl px-6">
         <SectionHeader
           eyebrow="11 · Contact"
