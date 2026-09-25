@@ -573,18 +573,6 @@ function Hero() {
       <div className="absolute inset-0 grid-bg opacity-40" />
       <div className="absolute inset-x-0 top-0 h-[60vh] bg-gradient-to-b from-transparent via-transparent to-background" />
 
-      {/* floating shapes */}
-      <div className="pointer-events-none absolute inset-0">
-        <div className="animate-float-slow absolute left-[8%] top-[20%] h-24 w-24 rounded-2xl border border-mint/30 bg-mint/5 backdrop-blur-sm" />
-        <div
-          className="animate-float-slow absolute right-[10%] top-[30%] h-16 w-16 rotate-45 border border-mint/40 bg-mint/10"
-          style={{ animationDelay: "-4s" }}
-        />
-        <div
-          className="animate-float-slow absolute bottom-[15%] left-[15%] h-12 w-12 rounded-full bg-mint/20 blur-xl"
-          style={{ animationDelay: "-8s" }}
-        />
-      </div>
       <motion.div style={{ y, opacity }} className="relative z-10 mx-auto grid w-full max-w-7xl gap-16 px-6 lg:grid-cols-[1.4fr_1fr] lg:items-center">
         <div>
           <Reveal delay={0.05}>
