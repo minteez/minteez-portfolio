@@ -1706,7 +1706,7 @@ function Contact() {
                         href={s.href}
                         target={s.href.startsWith("http") ? "_blank" : undefined}
                         rel="noreferrer"
-                        className="group grid grid-cols-[minmax(0,1fr)_auto] items-center gap-4 rounded-2xl border border-border bg-card/50 px-6 py-5 transition-all hover:border-mint/60 hover:mint-glow sm:flex sm:justify-between"
+                        className="group grid grid-cols-[minmax(0,1fr)_auto] items-center gap-4 rounded-2xl border border-mint/40 bg-card/50 px-6 py-5 shadow-[0_0_18px_-12px_var(--mint)] transition-all hover:border-mint/80 hover:mint-glow sm:flex sm:justify-between"
                       >
                         <div className="flex min-w-0 items-center gap-4">
                           <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl border border-mint/30 bg-mint/10 text-mint">
