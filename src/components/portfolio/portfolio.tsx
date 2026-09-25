@@ -558,53 +558,14 @@ function Loader() {
 
 function Hero() {
   const ref = useRef<HTMLDivElement>(null);
-  const vantaRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
   const y = useTransform(scrollYProgress, [0, 1], [0, 200]);
   const opacity = useTransform(scrollYProgress, [0, 1], [1, 0]);
 
-  useEffect(() => {
-    let effect: ReturnType<typeof import("vanta/dist/vanta.waves.min").default> | undefined;
-    let cancelled = false;
-
-    const initializeWaves = async () => {
-      const wavesModule = (await import("vanta/dist/vanta.waves.min")) as {
-        default: typeof import("vanta/dist/vanta.waves.min").default;
-      };
-      const THREE = await import("three");
-      const WAVES = wavesModule.default;
-
-      if (cancelled || !vantaRef.current) return;
-
-      effect = WAVES({
-        el: vantaRef.current,
-        THREE,
-        mouseControls: true,
-        touchControls: true,
-        gyroControls: false,
-        minHeight: 200,
-        minWidth: 200,
-        scale: 1,
-        scaleMobile: 1,
-        color: 0x1404,
-        shininess: 65,
-        waveHeight: 19.5,
-        waveSpeed: 1.3,
-        zoom: 0.87,
-      });
-    };
-
-    void initializeWaves();
-
-    return () => {
-      cancelled = true;
-      effect?.destroy();
-    };
-  }, []);
-
   return (
     <section id="top" ref={ref} className="relative flex min-h-screen items-center overflow-hidden pt-28">
-      <div ref={vantaRef} aria-hidden="true" className="absolute inset-0" />
+      {/* grid backdrop */}
+      <div className="absolute inset-0 grid-bg opacity-40" />
       <div className="absolute inset-x-0 top-0 h-[60vh] bg-gradient-to-b from-transparent via-transparent to-background" />
 
       <motion.div style={{ y, opacity }} className="relative z-10 mx-auto grid w-full max-w-7xl gap-16 px-6 lg:grid-cols-[1.4fr_1fr] lg:items-center">
@@ -1519,6 +1480,8 @@ function Facts() {
 /* -------------------------------------------------------------------------- */
 
 function Contact() {
+  const [openCategories, setOpenCategories] = useState<Record<string, boolean>>({});
+
   return (
     <section id="contact" className="relative border-t border-border/60 py-32">
       <div className="mx-auto max-w-5xl px-6">
@@ -1531,37 +1494,58 @@ function Contact() {
           {SOCIAL_CATEGORIES.map((category) => (
             <div key={category.label}>
               <Reveal>
-                <h3 className="mb-6 flex items-center gap-3 font-mono text-xs uppercase tracking-[0.2em] text-mint">
+                <button
+                  type="button"
+                  aria-expanded={Boolean(openCategories[category.label])}
+                  aria-controls={`contact-${category.label.toLowerCase().replace(/\s+/g, "-")}`}
+                  onClick={() =>
+                    setOpenCategories((current) => ({
+                      ...current,
+                      [category.label]: !current[category.label],
+                    }))
+                  }
+                  className="group mb-6 flex w-full items-center gap-3 text-left font-mono text-xs uppercase tracking-[0.2em] text-mint"
+                >
                   <span className="h-px w-6 bg-mint" />
-                  {category.label}
-                </h3>
+                  <span>{category.label}</span>
+                  <ChevronRight
+                    className={`h-4 w-4 transition-transform duration-200 ${
+                      openCategories[category.label] ? "rotate-90" : ""
+                    }`}
+                  />
+                </button>
               </Reveal>
-              <div className="grid gap-3">
-                {category.items.map((s, i) => (
-                  <Reveal key={s.name} delay={i * 0.05}>
-                    <a
-                      id={s.id}
-                      href={s.href}
-                      target={s.href.startsWith("http") ? "_blank" : undefined}
-                      rel="noreferrer"
-                      className="group grid grid-cols-[minmax(0,1fr)_auto] items-center gap-4 rounded-2xl border border-border bg-card/50 px-6 py-5 transition-all hover:border-mint/60 hover:mint-glow sm:flex sm:justify-between"
-                    >
-                      <div className="flex min-w-0 items-center gap-4">
-                        <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl border border-mint/30 bg-mint/10 text-mint">
-                          <s.icon className="h-4 w-4" />
+              {openCategories[category.label] && (
+                <div
+                  id={`contact-${category.label.toLowerCase().replace(/\s+/g, "-")}`}
+                  className="grid gap-3"
+                >
+                  {category.items.map((s, i) => (
+                    <Reveal key={s.name} delay={i * 0.05}>
+                      <a
+                        id={s.id}
+                        href={s.href}
+                        target={s.href.startsWith("http") ? "_blank" : undefined}
+                        rel="noreferrer"
+                        className="group grid grid-cols-[minmax(0,1fr)_auto] items-center gap-4 rounded-2xl border border-border bg-card/50 px-6 py-5 transition-all hover:border-mint/60 hover:mint-glow sm:flex sm:justify-between"
+                      >
+                        <div className="flex min-w-0 items-center gap-4">
+                          <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl border border-mint/30 bg-mint/10 text-mint">
+                            <s.icon className="h-4 w-4" />
+                          </div>
+                          <div className="min-w-0">
+                            <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
+                              {s.name}
+                            </p>
+                            <p className="truncate font-medium text-foreground">{s.value}</p>
+                          </div>
                         </div>
-                        <div className="min-w-0">
-                          <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
-                            {s.name}
-                          </p>
-                          <p className="truncate font-medium text-foreground">{s.value}</p>
-                        </div>
-                      </div>
-                      <ArrowUpRight className="h-5 w-5 shrink-0 text-mint transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-                    </a>
-                  </Reveal>
-                ))}
-              </div>
+                        <ArrowUpRight className="h-5 w-5 shrink-0 text-mint transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                      </a>
+                    </Reveal>
+                  ))}
+                </div>
+              )}
             </div>
           ))}
         </div>
