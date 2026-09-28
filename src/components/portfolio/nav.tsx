@@ -33,21 +33,22 @@ export function Nav() {
 
     if (!sections.length) return;
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visibleEntry = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+    const updateActiveSection = () => {
+      const activationPoint = window.innerHeight * 0.4;
+      const currentSection = sections
+        .filter((section) => section.getBoundingClientRect().top <= activationPoint)
+        .at(-1);
 
-        if (visibleEntry) {
-          setActiveId(visibleEntry.target.id);
-        }
-      },
-      { rootMargin: "-35% 0px -45% 0px", threshold: [0.2, 0.4, 0.6] },
-    );
+      setActiveId(currentSection?.id ?? sections[0].id);
+    };
 
-    sections.forEach((section) => observer.observe(section));
-    return () => observer.disconnect();
+    updateActiveSection();
+    window.addEventListener("scroll", updateActiveSection, { passive: true });
+    window.addEventListener("resize", updateActiveSection);
+    return () => {
+      window.removeEventListener("scroll", updateActiveSection);
+      window.removeEventListener("resize", updateActiveSection);
+    };
   }, []);
 
   return (
