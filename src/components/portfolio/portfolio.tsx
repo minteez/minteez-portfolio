@@ -1768,7 +1768,7 @@ function Footer() {
             className="h-40 w-40 rounded-xl border border-border/60 bg-background p-2 transition-transform duration-200 group-hover:scale-[1.03]"
           />
           <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground">
-            Scan or tap to open my Portid profile
+            Click or Scan the QR Code to connect instantly
           </span>
         </a>
         <div className="flex w-full flex-col items-center justify-between gap-4 border-t border-border/60 pt-6 sm:flex-row sm:text-left">
