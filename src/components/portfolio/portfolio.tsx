@@ -415,6 +415,10 @@ type SocialCategory = {
   items: SocialItem[];
 };
 
+const EMAIL_CONTACTS: SocialItem[] = [
+  { name: "Email", value: "kerzibakthestickmanyt101@gmail.com", href: "mailto:kerzibakthestickmanyt101@gmail.com", icon: Mail },
+];
+
 const SOCIAL_CATEGORIES: SocialCategory[] = [
   {
     label: "Social Media",
@@ -442,12 +446,12 @@ const SOCIAL_CATEGORIES: SocialCategory[] = [
     items: [
       { name: "CubingTime", value: "cubingtime.com/users/id99492", href: "https://cubingtime.com/users/id99492", icon: Timer },
       { name: "CubePB", value: "All unofficial cubing records", href: "https://cubepb.com/i/view?id=1892&expand=0&type=user", icon: Trophy, id: "cubepb-contact" },
+      { name: "CubeDesk", value: "minteez", href: "https://www.cubedesk.io/user/minteez", icon: Puzzle },
     ],
   },
   {
     label: "Other",
     items: [
-      { name: "Email", value: "kerzibakthestickmanyt101@gmail.com", href: "mailto:kerzibakthestickmanyt101@gmail.com", icon: Mail },
       { name: "YouTube", value: "@thecubermint", href: "https://youtube.com/@thecubermint", icon: Youtube },
       { name: "GitHub", value: "github.com/minteez", href: "https://github.com/minteez", icon: Github },
       { name: "Internet Archive", value: "@syed_muntasir_muhammad_mint_", href: "https://archive.org/details/@syed_muntasir_muhammad_mint_", icon: InternetArchiveIcon },
@@ -459,6 +463,37 @@ const SOCIAL_CATEGORIES: SocialCategory[] = [
     ],
   },
 ];
+
+function ContactCards({ items }: { items: SocialItem[] }) {
+  return (
+    <div className="grid gap-3">
+      {items.map((s, i) => (
+        <Reveal key={s.name} delay={i * 0.05}>
+          <a
+            id={s.id}
+            href={s.href}
+            target={s.href.startsWith("http") ? "_blank" : undefined}
+            rel="noreferrer"
+            className="group grid grid-cols-[minmax(0,1fr)_auto] items-center gap-4 rounded-2xl border border-mint/40 bg-card/50 px-6 py-5 shadow-[0_0_18px_-12px_var(--mint)] transition-all hover:border-mint/80 hover:mint-glow sm:flex sm:justify-between"
+          >
+            <div className="flex min-w-0 items-center gap-4">
+              <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl border border-mint/30 bg-mint/10 text-mint">
+                <s.icon className="h-4 w-4" />
+              </div>
+              <div className="min-w-0">
+                <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
+                  {s.name}
+                </p>
+                <p className="truncate font-medium text-foreground">{s.value}</p>
+              </div>
+            </div>
+            <ArrowUpRight className="h-5 w-5 shrink-0 text-mint transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+          </a>
+        </Reveal>
+      ))}
+    </div>
+  );
+}
 
 /* -------------------------------------------------------------------------- */
 /*  Reusable                                                                   */
@@ -1669,6 +1704,11 @@ function Contact() {
           title="Let's talk about ideas, cubes, or code."
           subtitle="I'm easiest to reach on email — the rest is where I share what I'm learning."
         />
+        <div className="mb-12 max-w-2xl"><ContactCards items={EMAIL_CONTACTS} /></div>
+        <div className="mb-6 flex items-center gap-3 font-mono text-xs uppercase tracking-[0.2em] text-mint">
+          <span className="h-px w-6 bg-mint" />
+          <span>Profiles</span>
+        </div>
         <div className="grid gap-12 lg:grid-cols-2">
           {SOCIAL_CATEGORIES.map((category) => (
             <div key={category.label}>
@@ -1695,34 +1735,8 @@ function Contact() {
                 </button>
               </Reveal>
               {openCategories[category.label] && (
-                <div
-                  id={`contact-${category.label.toLowerCase().replace(/\s+/g, "-")}`}
-                  className="grid gap-3"
-                >
-                  {category.items.map((s, i) => (
-                    <Reveal key={s.name} delay={i * 0.05}>
-                      <a
-                        id={s.id}
-                        href={s.href}
-                        target={s.href.startsWith("http") ? "_blank" : undefined}
-                        rel="noreferrer"
-                        className="group grid grid-cols-[minmax(0,1fr)_auto] items-center gap-4 rounded-2xl border border-mint/40 bg-card/50 px-6 py-5 shadow-[0_0_18px_-12px_var(--mint)] transition-all hover:border-mint/80 hover:mint-glow sm:flex sm:justify-between"
-                      >
-                        <div className="flex min-w-0 items-center gap-4">
-                          <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl border border-mint/30 bg-mint/10 text-mint">
-                            <s.icon className="h-4 w-4" />
-                          </div>
-                          <div className="min-w-0">
-                            <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
-                              {s.name}
-                            </p>
-                            <p className="truncate font-medium text-foreground">{s.value}</p>
-                          </div>
-                        </div>
-                        <ArrowUpRight className="h-5 w-5 shrink-0 text-mint transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-                      </a>
-                    </Reveal>
-                  ))}
+                <div id={`contact-${category.label.toLowerCase().replace(/\s+/g, "-")}`}>
+                  <ContactCards items={category.items} />
                 </div>
               )}
             </div>
@@ -1741,9 +1755,12 @@ function Footer() {
   return (
     <footer className="border-t border-border/60 py-12">
       <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-6 text-center sm:flex-row sm:text-left">
-        <p className="font-serif italic text-muted-foreground">
-          Designed with curiosity, discipline, and a passion for technology.
-        </p>
+        <div className="flex items-center gap-3">
+          <img src="/minteez-mark.png" alt="Minteez logo" className="h-8 w-8 object-contain" />
+          <p className="font-serif italic text-muted-foreground">
+            Designed with curiosity, discipline, and a passion for technology.
+          </p>
+        </div>
         <p className="font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">
           ©2026 SYED MUNTASIR
         </p>

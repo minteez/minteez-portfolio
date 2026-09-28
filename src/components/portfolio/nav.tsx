@@ -60,10 +60,11 @@ export function Nav() {
     >
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
         <a href="#top" className="group flex items-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-mint/60 focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-lg">
-          <span className="grid h-8 w-8 place-items-center rounded-lg border border-mint/40 bg-mint/10 font-serif text-sm font-semibold text-mint transition-all group-hover:mint-glow">
-            M
-          </span>
-          <span className="font-serif text-lg tracking-tight">Mint</span>
+          <img
+            src="/minteez-logo.png"
+            alt="Minteez"
+            className="h-8 w-auto object-contain transition-opacity group-hover:opacity-85"
+          />
         </a>
         <div className="hidden items-center gap-8 lg:flex">
           {links.map((l) => (
