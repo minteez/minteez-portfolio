@@ -1754,16 +1754,34 @@ function Contact() {
 function Footer() {
   return (
     <footer className="border-t border-border/60 py-12">
-      <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-6 text-center sm:flex-row sm:text-left">
-        <div className="flex items-center gap-3">
-          <img src="/minteez-mark.png" alt="Minteez logo" className="h-8 w-8 object-contain" />
-          <p className="font-serif italic text-muted-foreground">
-            Designed with curiosity, discipline, and a passion for technology.
+      <div className="mx-auto flex max-w-7xl flex-col items-center gap-8 px-6 text-center">
+        <a
+          href="https://www.portid.in/p/mintlabs-0afv"
+          target="_blank"
+          rel="noreferrer"
+          aria-label="Open my Portid profile"
+          className="group flex flex-col items-center gap-3"
+        >
+          <img
+            src="/portid-qr-website.png"
+            alt="QR code for my Portid profile"
+            className="h-40 w-40 rounded-xl border border-border/60 bg-background p-2 transition-transform duration-200 group-hover:scale-[1.03]"
+          />
+          <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground">
+            Scan or tap to open my Portid profile
+          </span>
+        </a>
+        <div className="flex w-full flex-col items-center justify-between gap-4 border-t border-border/60 pt-6 sm:flex-row sm:text-left">
+          <div className="flex items-center gap-3">
+            <img src="/minteez-mark.png" alt="Minteez logo" className="h-8 w-8 object-contain" />
+            <p className="font-serif italic text-muted-foreground">
+              Designed with curiosity, discipline, and a passion for technology.
+            </p>
+          </div>
+          <p className="font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">
+            ©2026 SYED MUNTASIR
           </p>
         </div>
-        <p className="font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">
-          ©2026 SYED MUNTASIR
-        </p>
       </div>
     </footer>
   );
