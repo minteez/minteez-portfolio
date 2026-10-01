@@ -1,5 +1,8 @@
 import { motion, useScroll, useTransform } from "motion/react";
 import { useEffect, useRef, useState, type ElementType } from "react";
+import { useNavigate } from "@tanstack/react-router";
+import { WhatImAbout } from "./what-im-about";
+import { SecretListener } from "./secret-listener";
 import {
   ArrowDown,
   ArrowUpRight,
@@ -58,6 +61,8 @@ const TYPEWRITER_ROLES = [
   "Vibe Coder",
   "Speedcuber",
   "Public Speaker",
+  "AI Enthusiast",
+  "Young AI Builder",
 ];
 
 const EDUCATION = [
@@ -1752,6 +1757,12 @@ function Contact() {
 /* -------------------------------------------------------------------------- */
 
 function Footer() {
+  const navigate = useNavigate();
+  const taps = useRef(0);
+  const onMark = () => {
+    taps.current += 1;
+    if (taps.current >= 5) navigate({ to: "/secret-base" });
+  };
   return (
     <footer className="border-t border-border/60 py-12">
       <div className="mx-auto flex max-w-7xl flex-col items-center gap-8 px-6 text-center">
@@ -1773,13 +1784,15 @@ function Footer() {
         </a>
         <div className="flex w-full flex-col items-center justify-between gap-4 border-t border-border/60 pt-6 sm:flex-row sm:text-left">
           <div className="flex items-center gap-3">
-            <img src="/minteez-mark.png" alt="Minteez logo" className="h-8 w-8 object-contain" />
+            <button type="button" onClick={onMark} aria-label="Minteez mark" title="Some things open with persistence." className="rounded-md">
+              <img src="/minteez-mark.png" alt="" className="h-8 w-8 object-contain" />
+            </button>
             <p className="font-serif italic text-muted-foreground">
               Designed with curiosity, discipline, and a passion for technology.
             </p>
           </div>
           <p className="font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">
-            ©2026 SYED MUNTASIR
+            ©2026 SYED MUNTASIR <span aria-hidden="true" className="opacity-30">· m·i·n·t</span>
           </p>
         </div>
       </div>
@@ -1794,12 +1807,14 @@ function Footer() {
 export function Portfolio() {
   return (
     <div className="relative min-h-screen overflow-hidden bg-background text-foreground">
+      <SecretListener />
       <Loader />
       <CursorGlow />
       <Nav />
       <main className="relative z-10">
         <Hero />
         <About />
+        <WhatImAbout />
         <Education />
         <Certifications />
         <Skills />
