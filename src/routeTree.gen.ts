@@ -9,17 +9,17 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as SecretBaseRouteImport } from './routes/secret-base'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as SecretBaseRouteImport } from './routes/secret-base'
 
-const SecretBaseRoute = SecretBaseRouteImport.update({
-  id: '/secret-base',
-  path: '/secret-base',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SecretBaseRoute = SecretBaseRouteImport.update({
+  id: '/secret-base',
+  path: '/secret-base',
   getParentRoute: () => rootRouteImport,
 } as any)
 
@@ -51,18 +51,18 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/secret-base': {
-      id: '/secret-base'
-      path: '/secret-base'
-      fullPath: '/secret-base'
-      preLoaderRoute: typeof SecretBaseRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/': {
       id: '/'
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/secret-base': {
+      id: '/secret-base'
+      path: '/secret-base'
+      fullPath: '/secret-base'
+      preLoaderRoute: typeof SecretBaseRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
