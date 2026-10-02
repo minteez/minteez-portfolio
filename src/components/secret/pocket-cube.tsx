@@ -141,6 +141,11 @@ export function PocketCube() {
     setScrambled(true);
   };
 
+  const toggleTimer = () => {
+    if (start && !end) setEnd(Date.now());
+    else { setStart(Date.now()); setEnd(null); setNow(Date.now()); }
+  };
+
   const reset = () => {
     setS(solved());
     setMoves(0);
@@ -175,11 +180,16 @@ export function PocketCube() {
       </div>
       <div className="flex flex-wrap items-center justify-center gap-3 font-mono text-xs uppercase tracking-widest">
         <button type="button" onClick={scramble} className="rounded-full bg-mint px-4 py-2 text-mint-foreground">Scramble</button>
+        <button type="button" onClick={toggleTimer} className="rounded-full border border-border px-4 py-2 hover:border-mint">{start && !end ? "Stop" : "Start"}</button>
         <button type="button" onClick={reset} className="rounded-full border border-border px-4 py-2 hover:border-mint">Reset</button>
         <span className="text-muted-foreground">Time <span className="text-mint">{elapsed.toFixed(2)}s</span></span>
         <span className="text-muted-foreground">Moves <span className="text-mint">{moves}</span></span>
       </div>
-      {end && <p className="text-center font-serif text-lg italic text-mint">Solved in {elapsed.toFixed(2)}s · {moves} moves</p>}
+      {end && isSolved(s) && moves > 0 && (
+        <p role="status" className="text-center font-serif text-lg italic text-mint">
+          Nice solve. You found another layer. ({elapsed.toFixed(2)}s · {moves} moves)
+        </p>
+      )}
     </div>
   );
 }
