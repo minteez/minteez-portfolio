@@ -100,6 +100,12 @@ const CERTIFICATIONS = [
     date: "September 5, 2026",
     image: "https://fgwnypztljhmslgahjrq.supabase.co/storage/v1/object/sign/Certificates/Muntasir%20-%20AI%20Superstar%20Course_page-0001.jpg?token=eyJraWQiOiI2OWNmOThhNi1mN2I4LTQ2NmUtYmUyZi04YzI0ZGE2Y2I4Y2UiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJDZXJ0aWZpY2F0ZXMvTXVudGFzaXIgLSBBSSBTdXBlcnN0YXIgQ291cnNlX3BhZ2UtMDAwMS5qcGciLCJzY29wZSI6ImRvd25sb2FkIiwiaWF0IjoxNzg4ODY4NDE3LCJleHAiOjgwOTYwNjg0MTd9.1eqYZTusOlwgi7d9QyGlBNuEyxKJQH98OlUGZ6Engyw",
   },
+  {
+    title: "XXXIV Cluster Inter-School Zonal Quiz Competition 2026-27",
+    issuer: "XXXIV Cluster Inter-School Zonal Quiz Competition",
+    date: "October 10, 2026",
+    image: "https://fgwnypztljhmslgahjrq.supabase.co/storage/v1/object/sign/Certificates/pic-420ee04b-007e-410c-8abf-13f86281dc4a.jpg?token=eyJraWQiOiI2OWNmOThhNi1mN2I4LTQ2NmUtYmUyZi04YzI0ZGE2Y2I4Y2UiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJDZXJ0aWZpY2F0ZXMvcGljLTQyMGVlMDRiLTAwN2UtNDEwYy04YWJmLTEzZjg2MjgxZGM0YS5qcGciLCJzY29wZSI6ImRvd25sb2FkIiwiaWF0IjoxNzkxNjUwMDk4LCJleHAiOjg3OTI2NDIwOTh9.sxlltlcS-DojB49UCYcOoZmpQyIpT_GsAVutUwQke0Q",
+  },
 ];
 
 const COURSES = [
@@ -215,6 +221,11 @@ const ACHIEVEMENTS = [
     title: "4x Hindi Speech Winner",
     detail: "January 2024 - 2nd Position · January 2025 - 1st Position · September 2025 - 2nd Position · September 2026 - 1st Position",
     sub: "World Hindi Day and National Hindi Day recognitions",
+  },
+  {
+    title: "2nd Prize",
+    detail: "XXXIV Cluster Inter-School Zonal Quiz Competition 2026-27",
+    sub: "Senior Category/Under-19",
   },
 ];
 
