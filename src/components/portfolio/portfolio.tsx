@@ -109,7 +109,7 @@ const CERTIFICATIONS = [
     title: "XXXIV Cluster Inter-School Zonal Quiz Competition 2026-27",
     issuer: "XXXIV Cluster Inter-School Zonal Quiz Competition",
     date: "October 10, 2026",
-    image: "https://fgwnypztljhmslgahjrq.supabase.co/storage/v1/object/sign/Certificates/pic-420ee04b-007e-410c-8abf-13f86281dc4a.jpg?token=eyJraWQiOiI2OWNmOThhNi1mN2I4LTQ2NmUtYmUyZi04YzI0ZGE2Y2I4Y2UiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJDZXJ0aWZpY2F0ZXMvcGljLTQyMGVlMDRiLTAwN2UtNDEwYy04YWJmLTEzZjg2MjgxZGM0YS5qcGciLCJzY29wZSI6ImRvd25sb2FkIiwiaWF0IjoxNzkxNjUwMDk4LCJleHAiOjg3OTI2NDIwOTh9.sxlltlcS-DojB49UCYcOoZmpQyIpT_GsAVutUwQke0Q",
+    image: "https://fgwnypztljhmslgahjrq.supabase.co/storage/v1/object/sign/Certificates/pic-420ee04b-007e-410c-8abf-13f86281dc4a.jpg?token=eyJraWQiOiI2OWNmOThhNi1mN2I4LTQ2NmUtYmUyZi04YzI0ZGE2Y2I4Y2UiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJDZXJ0aWZpY2F0ZXMvcGljLTQyMGVlMDRiLTAwN2UtNDEwYy04YWJmLTEzZjg2MjgxZGM0YS5qcGciLCJzY29wZSI6ImRvd25sb2FkIiwiaWF0IjoxNzkzNTI2MDI1LCJleHAiOjg3MzE0NDYwMjV9.80LFkDRGbRmNIiQ7eB_fqpV5WHbFnq8qY5bgiRtTitc",
   },
 ];
 
