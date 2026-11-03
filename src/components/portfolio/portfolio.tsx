@@ -468,7 +468,7 @@ const SOCIAL_CATEGORIES: SocialCategory[] = [
   {
     label: "Other",
     items: [
-      { name: "YouTube", value: "@thecubermint", href: "https://youtube.com/@thecubermint", icon: Youtube },
+      { name: "YouTube", value: "@thecubermint", href: "https://www.youtube.com/channel/UCtQcfr-ucyLMRhWkHNXw7gw/", icon: Youtube },
       { name: "GitHub", value: "github.com/minteez", href: "https://github.com/minteez", icon: Github },
       { name: "Internet Archive", value: "@syed_muntasir_muhammad_mint_", href: "https://archive.org/details/@syed_muntasir_muhammad_mint_", icon: InternetArchiveIcon },
       { name: "Lovable", value: "@minteez", href: "https://www.lovable.dev/@minteez", icon: LovableIcon },
