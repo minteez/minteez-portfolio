@@ -130,6 +130,80 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
   errorComponent: ErrorComponent,
 });
 
+declare global {
+  interface Window {
+    confetti?: (...args: any[]) => void;
+    ribbons?: (...args: any[]) => void;
+  }
+}
+
+const activeIntervals: number[] = [];
+const activeTimeouts: number[] = [];
+
+function cleanupActiveEffects() {
+  activeIntervals.forEach((id) => window.clearInterval(id));
+  activeTimeouts.forEach((id) => window.clearTimeout(id));
+  activeIntervals.length = 0;
+  activeTimeouts.length = 0;
+}
+
+function triggerBirthdayEffects() {
+  const today = new Date();
+  const isOctober27 = today.getMonth() === 9 && today.getDate() === 27;
+
+  if (!isOctober27 || typeof window === "undefined") return;
+
+  if (typeof window.confetti !== "function" || typeof window.ribbons !== "function") {
+    return;
+  }
+
+  cleanupActiveEffects();
+
+  const animationEnd = Date.now() + 6000;
+
+  const confettiInterval = window.setInterval(() => {
+    if (Date.now() >= animationEnd) {
+      window.clearInterval(confettiInterval);
+      return;
+    }
+
+    window.confetti?.({
+      particleCount: 8,
+      angle: 90,
+      spread: 70,
+      origin: {
+        x: Math.random(),
+        y: 0,
+      },
+      gravity: 1.2,
+      ticks: 0,
+      colors: ["#FFD700", "#FF69B4", "#00CED1", "#FF4500"],
+    });
+  }, 50);
+  activeIntervals.push(confettiInterval);
+
+  const ribbonStartTimeout = window.setTimeout(() => {
+    window.ribbons?.({
+      colors: ["#FF4500", "#FFD700", "#FF69B4", "#00CED1"],
+    });
+
+    const ribbonsInterval = window.setInterval(() => {
+      if (Date.now() >= animationEnd) {
+        window.clearInterval(ribbonsInterval);
+        return;
+      }
+
+      window.ribbons?.({
+        colors: ["#FF4500", "#FFD700", "#FF69B4", "#00CED1"],
+      });
+    }, 2000);
+
+    activeIntervals.push(ribbonsInterval);
+  }, 2000);
+
+  activeTimeouts.push(ribbonStartTimeout);
+}
+
 function RootShell({ children }: { children: ReactNode }) {
   return (
     <html lang="en" className="dark">
@@ -146,6 +220,34 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+
+  useEffect(() => {
+    const loadConfettiLibrary = () => {
+      const script = document.createElement("script");
+      script.src = "https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js";
+      script.async = true;
+      script.onload = () => {
+        triggerBirthdayEffects();
+      };
+      script.onerror = () => {
+        console.warn("Birthday confetti library failed to load.");
+      };
+      document.body.appendChild(script);
+      return script;
+    };
+
+    if (typeof window !== "undefined" && typeof window.confetti === "function" && typeof window.ribbons === "function") {
+      triggerBirthdayEffects();
+      return;
+    }
+
+    const script = loadConfettiLibrary();
+
+    return () => {
+      script.remove();
+      cleanupActiveEffects();
+    };
+  }, []);
 
   return (
     <QueryClientProvider client={queryClient}>
